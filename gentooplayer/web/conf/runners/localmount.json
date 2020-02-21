@@ -1,0 +1,44 @@
+{
+  "name": "System E. Mount Local Disk",
+  "script_path": "/opt/.gentooplayer/web/scripts/localmount.sh",
+  "description": "**Mount Local Disk**  \n . \n **List Disk:** lists the available disks and their partitions \n **Select Disk:** select the partition to mount \n **Type mount folder:** name the folder for the mount, ex. Music1, Music2 etc. \n **Enable at boot:** select enable if you want to mount the disk at boot time, otherwise leave blank \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "List Disk",
+      "param": "-a",
+      "type": "list",
+      "values": {
+        "script": "lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT"
+      },
+      "description": "List Disk on System"
+    },
+    {
+      "name": "Select Disk",
+      "param": "-b",
+      "required": true,
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/mount/localdisk.sh"
+      },
+      "description": "Select Disk partition to be mounted"
+    },
+    {
+      "name": "Type mount folder",
+      "param": "-c",
+      "required": true,
+      "type": "text",
+      "description": "Type mount folder, For example Music1, Music2..."
+    },
+    {
+      "name": "Enable at boot",
+      "param": "-d",
+      "type": "list",
+      "values": [
+        "",
+        "enable"
+      ],
+      "description": "Select enable to automatic mount at boot"
+    }
+  ]
+}

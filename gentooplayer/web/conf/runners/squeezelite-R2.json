@@ -1,0 +1,201 @@
+{
+  "name": "Player C. Squeezelite-R2",
+  "script_path": "/opt/.gentooplayer/web/scripts/squeezelite-R2.sh",
+  "description": "Squeezelite-R2 parameters ([**INFO**](https://www.max2play.com/en/wiki/command-line-options-for-squeezelite/) [**INFO2**](https://soundcheck-audio.blogspot.com/2017/10/raspberry-pi-audio-engine-part-2.html)) \n **Timeout:** Close output device when idle after timeout seconds - Recommended value **1** \n **DSD:** leave blank if the dac does not support DSD, -D for the dop option, -D :* for the various Native DSD options, type **alsacap** into the terminal to find out what type of dsd it supports audio output \n **Min Sample rate:** Minimum sample rate supported the device \n **Max Sample rate:** Maximum sample rate supported the device \n **Buffer Time (ALSA):** buffer time in ms or size in bytes - default value **40** - value 1-499 \n **Period Count (ALSA):**  period count or size in bytes - value 1-49 - default **4** - recommended **3** \n **Sample format (ALSA):** leave blank if you do not know \n **Use mmap (ALSA):** 1 enable - 0 disable \n **Internal Buffer stream:** Specify internal stream buffer sizes in kilobytes - default **2080** \n **Internal Buffer stream:** Specify Output stream buffer sizes in kilobytes - default **3528** \n **Enable log**: Leave empty not to enable the log \n **Mac Adresse:** change this value if you have more squeezelite on the net, otherwise leave the default value \n . \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Timeout",
+      "param": "-a",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/R2/time"
+      },
+      "description": "Close output device when idle after timeout seconds"
+    },
+    {
+      "name": "Audiocard",
+      "param": "-t",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/R2/card"
+      },
+      "required": true,
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/card.sh"
+      },
+      "description": "Select AudioCard"
+    },
+    {
+      "name": "DSD",
+      "param": "-d",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/R2/dsd"
+      },
+      "values": [
+        "",
+        "-D",
+        "-D :u32be",
+        "-D :u32le",
+        "-D :u16be",
+        "-D :u16le",
+        "-D :u16le"
+      ],
+      "description": "Select DSD Audio: | -D=dop | -D :* native dsd"
+    },
+    {
+      "name": "Min Sample rate",
+      "param": "-r",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/R2/minsr"
+      },
+      "required": true,
+      "values": [
+        "44100",
+        "48000",
+        "88200",
+        "96000",
+        "176400",
+        "192000",
+        "352800",
+        "384000",
+        "705600",
+        "784000"
+      ],
+      "description": "Select Min SR dac supported"
+    },
+    {
+      "name": "Max Sample rate",
+      "param": "-R",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/R2/maxsr"
+      },
+      "required": true,
+      "values": [
+        "44100",
+        "48000",
+        "88200",
+        "96000",
+        "176400",
+        "192000",
+        "352800",
+        "384000",
+        "705600",
+        "784000"
+      ],
+      "description": "Select Max SR dac supported"
+    },
+    {
+      "name": "Alsa parameters",
+      "param": "-I",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/R2/alsap"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable ALSA parameters. Disable use default parameters"
+    },
+    {
+      "name": "Buffer Time (ALSA)",
+      "param": "-b",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/R2/btime"
+      },
+      "required": true,
+      "min": "1",
+      "max": "499",
+      "description": "Specify ALSA params to open output device, buffer time in ms or size in bytes"
+    },
+    {
+      "name": "Period Count (ALSA)",
+      "param": "-p",
+      "type": "init",
+      "default": {
+        "script": "cat /etc/default/web/R2/pcount"
+      },
+      "min": "1",
+      "max": "49",
+      "description": "Specify ALSA params to open output device, period count or size in bytes"
+    },
+    {
+      "name": "Sample format (ALSA)",
+      "param": "-s",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/R2/sformat"
+      },
+      "values": [
+        "",
+        "16",
+        "24",
+        "24_3",
+        "32"
+      ],
+      "description": "Specify ALSA params to open output device, sample format"
+    },
+    {
+      "name": "Use mmap (ALSA)",
+      "param": "-u",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/R2/mmap"
+      },
+      "values": [
+        "0",
+        "1"
+      ],
+      "description": "Specify ALSA params to open output device, use mmap"
+    },
+    {
+      "name": "Internal Buffer stream",
+      "param": "-i",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/R2/ibuffer"
+      },
+      "description": "Specify internal Buffer stream - sizes in kilobytes"
+    },
+    {
+      "name": "Output Buffer stream",
+      "param": "-o",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/R2/obuffer"
+      },
+      "description": "Specify Output Buffer stream - sizes in kilobytes"
+    },
+    {
+      "name": "Enable log",
+      "param": "-g",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/R2/log"
+      },
+      "values": [
+        "",
+        "info",
+        "debug"
+      ],
+      "description": "Enable Squeezelite-R2 log"
+    },
+    {
+      "name": "Mac Adresse",
+      "param": "-h",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/R2/mac"
+      },
+      "required": true,
+      "min": "10",
+      "max": "99",
+      "description": "Change the mac adresse"
+    }
+  ]
+}

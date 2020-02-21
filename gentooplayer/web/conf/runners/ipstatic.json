@@ -1,0 +1,56 @@
+{
+  "name": "System D. Static IP-LAN",
+  "script_path": "/opt/.gentooplayer/web/scripts/ipstatic.sh",
+  "description": "**Configure static IP**   \n **Iface Name:** select the name of the network interface, usually it is eth0, eth1, enp9s0, etc...  \n **IP Router:** type the ip of the router, usually it is found automatically but if it is wrong you have to change it  \n **Enter the NetMask** type the netmask, usually it is found automatically but if it is wrong you have to change it  \n **IP address for this pc:** write the desired ip, it should be the same as that of the router changing only the last digit  \n **Disable DHCP:** with static ip the dhcp is no longer needed it is better to disable it  \n . \n.",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Iface Name",
+      "param": "-a",
+      "required": true,
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/rete/iface.sh"
+      },
+      "description": "Select the network interface"
+    },
+    {
+      "name": "IP Router",
+      "param": "-b",
+      "required": true,
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/script/rete/iprouter.sh"
+      },
+      "type": "text",
+      "description": "Type in the router's ip"
+    },
+    {
+      "name": "Enter the NetMask",
+      "param": "-c",
+      "required": true,
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/script/rete/mask.sh"
+      },
+      "type": "text",
+      "description": "Type NetMask"
+    },
+    {
+      "name": "IP address for this pc",
+      "param": "-d",
+      "required": true,
+      "type": "text",
+      "description": "Type IP address, ex. 192.168.1.22, 192.168.178.22"
+    },
+    {
+      "name": "Disable DHCP",
+      "param": "-e",
+      "required": true,
+      "type": "list",
+      "values": [
+        "yes",
+        "no"
+      ],
+      "description": "Disable the dhcp Server"
+    }
+  ]
+}

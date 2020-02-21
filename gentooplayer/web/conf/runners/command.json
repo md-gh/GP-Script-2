@@ -1,0 +1,14 @@
+{
+  "name": "System A. Excute Command",
+  "script_path": "/opt/.gentooplayer/web/scripts/command.sh",
+  "description": " ________________________________ \n **Insert command and excute** \n ________________________________ \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Type command",
+      "param": "-a",
+      "type": "text",
+      "description": "type command to excute"
+    }
+  ]
+}

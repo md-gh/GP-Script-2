@@ -1,0 +1,50 @@
+{
+  "name": "B - Log",
+  "script_path": "/opt/.gentooplayer/web/scripts/log.sh",
+  "description": "View log",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Software log",
+      "param": "-a",
+      "type": "list",
+      "values": [
+        "squeezelite-R2",
+        "squeezelite",
+        "RoonBridge",
+        "RoonServer",
+        "Networkaudiod",
+        "LMS Perform",
+        "LMS Scanner",
+        "LMS Server",
+        "Mpd",
+        "Mpd_Sima",
+        "Upmpdcli",
+        "BubbleUpnp"
+      ],
+      "description": "Select software log"
+    },
+    {
+      "name": "Mode View",
+      "param": "-b",
+      "type": "list",
+      "required": true,
+      "values": [
+        "last",
+        "all",
+        "live"
+      ],
+      "description": "Select mode view log"
+    },
+    {
+      "name": "Clear log after",
+      "param": "-c",
+      "type": "list",
+      "values": [
+        "yes",
+        "no"
+      ],
+      "description": "Clear log"
+    }
+  ]
+}

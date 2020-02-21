@@ -1,0 +1,190 @@
+{
+  "name": "Player A. Enable",
+  "script_path": "/opt/.gentooplayer/web/scripts/enablep.sh",
+  "description": "**Enable/Disable** players at system startup \n . \n **Squeezelite-R2:** Lightweight headless squeezebox emulator capable to play server side upsampled and decoded PCM streams or 'native' DSD formats.[**More Info**](https://github.com/marcoc1712/squeezelite-R2/releases) \n **Squeezelite:** official version - compiled to reproduce only pcm and dsd.[**More Info**](https://github.com/ralph-irving/squeezelite) \n **Networkaudiod:** demon for HqPlayer.[**More Info**](https://www.signalyst.com/consumer.html) \n **LogitechMediaServer:** streaming audio server.[**More Info**](https://en.wikipedia.org/wiki/Logitech_Media_Server) \n **BubbleUpnp:** [**More Info**](https://www.bubblesoftapps.com/bubbleupnpserver2/) \n **HQPlayer Embedded:** Embedded version of HQPlayer.[**More Info**](https://www.signalyst.com/custom.html) \n **Mpd:** Music Player Daemon (MPD) is a flexible, powerful, server-side application for playing music.[**More Info**](https://www.musicpd.org/) \n **UpMpdCli:** UPnP Media Renderer front-end for MPD.[**More Info**](https://www.lesbonscomptes.com/upmpdcli/) \n **RoonBridge:** software package that extends Roon's audio playback capabilities to other devices or computers in your home.[**More Info**](https://kb.roonlabs.com/RoonBridge) \n **RoonServer:** media server (Only x86).[**More Info**](https://roonlabs.com/) \n **MPD_sima:** A non-interactive autoqueue client. It will queue new tracks following last.fm similar artists suggestions.[**More Info**](https://kaliko.me/mpd-sima/) \n **MYmpd:** MPD Web GUI. Can be reached from a browser by simply typing in the host's IP address.[**More Info**](https://jcorporation.github.io/myMPD/) \n **MinimServer:** MinimServer is a new UPnP AV music server with a number of innovative features that make it easier to organize and explore your music collection. [**More Info**](https://minimserver.com/index.html) \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Squeezelite-R2",
+      "param": "-a",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/sq2enable.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable Squeezelite-R2 at boot"
+    },
+    {
+      "name": "Squeezelite",
+      "param": "-b",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/sqenable.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable Squeezelite at boot"
+    },
+    {
+      "name": "Networkaudiod (NAD)",
+      "param": "-c",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/nadenable.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable Networkaudiod (NAD) at boot"
+    },
+    {
+      "name": "LogitechMediaServre (LMS)",
+      "param": "-d",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/lmsenable.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable LogitechMediaServre (LMS) at boot"
+    },
+    {
+      "name": "BubbleUpnp",
+      "param": "-e",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/bubenable.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable BubbleUpnp at boot"
+    },
+    {
+      "name": "HQPlayer Embedded",
+      "param": "-f",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/hqrenable.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable HQPlayer Embedded at boot"
+    },
+    {
+      "name": "Mpd",
+      "param": "-g",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/mpdsh.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable Mpd at boot"
+    },
+    {
+      "name": "UpMpdCli",
+      "param": "-h",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/upmpdcli.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable UpMpdCli at boot"
+    },
+    {
+      "name": "RoonBridge",
+      "param": "-i",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/roonbridge.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable RoonBridge at boot"
+    },
+    {
+      "name": "RoonServer",
+      "param": "-l",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/roonserver.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable RoonServer at boot"
+    },
+    {
+      "name": "Mpd_sima",
+      "param": "-m",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/mpdsima.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable Mpd_sima at boot"
+    },
+    {
+      "name": "MYmpd",
+      "param": "-n",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/mympd.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable MYmpd at boot"
+    },
+    {
+      "name": "MinimServer",
+      "param": "-p",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/minimserver.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable MinimServer at boot"
+    },
+    {
+      "name": "Web Interface",
+      "param": "-o",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/web.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "Enable or Disable Web Interface at boot"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "System L. Backup/Restore setting",
+  "script_path": "/opt/.gentooplayer/web/scripts/backuprestore.sh",
+  "description": "**Backup/Restore setting**  \n . \n **It is assumed that the backup disk has already been mounted.Otherwise go back and use mountfs or the webinterface - local mount to mount the disk and then try again.** \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Select Directory for backup",
+      "param": "-a",
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/bakupdisk.sh"
+      },
+      "description": "List Directory for backup"
+    },
+    {
+      "name": "Select the backup to restore",
+      "param": "-b",
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/backupfile.sh"
+      },
+      "description": "Select Backup"
+    }
+  ]
+}

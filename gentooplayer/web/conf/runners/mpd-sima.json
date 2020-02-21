@@ -1,0 +1,74 @@
+{
+  "name": "Player G. Mpd-sima",
+  "script_path": "/opt/.gentooplayer/web/scripts/mpd_sima.sh",
+  "description": "Mpd-sima parameters ([**INFO**](https://manpages.debian.org/stretch/mpd-sima/mpd_sima.cfg.5.en.html)) \n . \n **Qeuee Modes:** **track** Queue a similar track chosen at random from a similar artist. **top** Queue a track from a similar artist, chosen among top tracks according to last.fm data mining. **album** Queue a whole album chosen at random from a similar artist. \n **Max Art:** Number of similar artist to retrieve from local media library. When set to something superior to zero, it tries to get as much similar artists from media library. \n **Depth:** How many artists to base on similar artists search. \n **Single Album:** Prevent from queueing a track from the same album (it often happens with OST).Only relevant in track queue mode. \n **Track to Add:** How many track(s) to add. Only relevant in top and track queue modes. \n **Album to Add:** How many album(s) to add. Only relevant in album queue modes. \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Qeuee Modes",
+      "param": "-a",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd-sima/quee"
+      },
+      "required": true,
+      "values": [
+        "track",
+        "top",
+        "album"
+      ],
+      "description": "Select queue mode"
+    },
+    {
+      "name": "Max Artist",
+      "param": "-b",
+      "type": "int",
+      "required": true,
+      "default": {
+        "script": "cat /etc/default/web/mpd-sima/maxa"
+      },
+      "description": "Setting max artist"
+    },
+    {
+      "name": "Depth",
+      "param": "-c",
+      "type": "int",
+      "required": true,
+      "default": {
+        "script": "cat /etc/default/web/mpd-sima/depth"
+      },
+      "description": "Set Depth"
+    },
+    {
+      "name": "Single Album",
+      "param": "-d",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd-sima/salbum"
+      },
+      "values": [
+        "false",
+        "true"
+      ],
+      "description": "Set Single Album"
+    },
+    {
+      "name": "Track to Add",
+      "param": "-e",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/mpd-sima/track"
+      },
+      "description": "Set track add"
+    },
+    {
+      "name": "Album to Add",
+      "param": "-f",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/mpd-sima/album"
+      },
+      "description": "Set album to add"
+    }
+  ]
+}

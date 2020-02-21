@@ -1,0 +1,90 @@
+{
+  "name": "System F. Mount Remote Disk",
+  "script_path": "/opt/.gentooplayer/web/scripts/remotemount.sh",
+  "description": "**Mount Remote Disk**  \n . \n **List Disk (cifs and nfs):** lists the available share in the net \n **Select IP Server:** select the server ip \n **Type of sharing:** selects the type of cifs (samba) or nfs share \n **Options:** are a comma delimited list of mount options. Ref. mount man pages: ([**CIFS**](https://linux.die.net/man/8/mount.cifs)) ([**NFS**](https://linux.die.net/man/5/nfs)) - ex. **vers=1.0** | **vers=2.0** | **vers=3,nolock** | **vers=2.0,gid=50** | etc \n **Type share directory:** Type the directory of the server you want to mount (exact name) \n **Type mount folder:** Give a name to the , it is free and of your choice (ex. Musicnas, Film_nas1, Music_loss_nas, Music1, Music2, etc.) \n **Username:** enter username if required by the server, otherwise leave guest \n **Password:** enter password if required by the server, otherwise leave NULL \n **Enable at boot:** select enable if you want to mount the disk at boot time, otherwise leave blank \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "List Disk cifs",
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/mount/remotecfis.sh"
+      },
+      "description": "List Disk cifs"
+    },
+    {
+      "name": "List Disk nfs",
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/mount/remotenfs.sh"
+      },
+      "description": "List Disk nfs"
+    },
+    {
+      "name": "Select IP Server",
+      "param": "-c",
+      "required": true,
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/mount/ipserver.sh"
+      },
+      "description": "Select IP Server"
+    },
+    {
+      "name": "Sharing type",
+      "param": "-d",
+      "required": true,
+      "default": "cifs",
+      "type": "list",
+      "values": [
+        "cifs",
+        "nfs"
+      ],
+      "description": "Select Type of sharing"
+    },
+    {
+      "name": "Options",
+      "param": "-o",
+      "type": "text",
+      "description": "write options separated by commas"
+    },
+    {
+      "name": "Type share directory",
+      "param": "-g",
+      "type": "text",
+      "required": true,
+      "description": "Type the directory of the server you want to mount (exact name)"
+    },
+    {
+      "name": "Type mount folder",
+      "param": "-h",
+      "required": true,
+      "type": "text",
+      "description": "Type mount folder, For example Music1, Music2..."
+    },
+    {
+      "name": "Username",
+      "param": "-i",
+      "default": "guest",
+      "type": "text",
+      "description": "Insert share user"
+    },
+    {
+      "name": "Password",
+      "param": "-l",
+      "default": "NULL",
+      "type": "text",
+      "description": "Insert share password"
+    },
+    {
+      "name": "Enable at boot",
+      "param": "-m",
+      "type": "list",
+      "values": [
+        "",
+        "enable"
+      ],
+      "description": "Select enable to automatic mount at boot"
+    }
+  ]
+}

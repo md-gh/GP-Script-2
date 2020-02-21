@@ -1,0 +1,64 @@
+{
+  "name": "System I. WI-FI Configure",
+  "script_path": "/opt/.gentooplayer/web/scripts/wificonfig.sh",
+  "description": "**Configure WI-FI** \n ________________________________ \n **WARNING:** wifi only works with the 2 -ST- kernels \n ________________________________ \n **WARNING:** if you don't know the parameters to enter in ip router and netmask, leave the mode on dhcp... \n ________________________________ \n.",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Iface Name",
+      "param": "-c",
+      "required": true,
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/rete/wiface.sh"
+      },
+      "description": "Select the network interface"
+    },
+    {
+      "name": "SSID Name",
+      "param": "-a",
+      "required": true,
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/wifi/ssid.sh"
+      },
+      "description": "Select the SSID name"
+    },
+    {
+      "name": "WPA2 Paaasword",
+      "param": "-b",
+      "required": true,
+      "type": "text",
+      "description": "Type in the password"
+    },
+    {
+      "name": "Select mode",
+      "param": "-d",
+      "type": "list",
+      "default": "dhcp",
+      "values": [
+        "dhcp",
+        "IP_Static"
+      ],
+      "description": "Select mode"
+    },
+    {
+      "name": "IP Router",
+      "param": "-e",
+      "type": "text",
+      "description": "Type in the router's ip"
+    },
+    {
+      "name": "Enter the NetMask",
+      "param": "-f",
+      "type": "text",
+      "description": "Type NetMask"
+    },
+    {
+      "name": "IP address for this pc",
+      "param": "-g",
+      "type": "text",
+      "description": "Type IP address, ex. 192.168.1.22, 192.168.178.22"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+AVVERTENZE:
+
+per alcune opzioni del comando "twk" non c'é una funzione per ripristinare le opzioni originali.
+Per farlo bisogna proseguire a "mano"
+
+Istruzioni su come riattivare alcune funzioni.
+
+#####################################################
+
+1) Riattivare l HDMI
+usare il comando "confset" senza virgolette e cancellare la riga --> hdmi_blanking=2
+
+######################################################
+
+2) Riattivare l ACT LED
+usare il comando "confset" senza virgolette e cancellare le righe:
+dtparam=act_led_trigger=none
+dtparam=act_led_activelow=on
+
+#######################################################
+
+3) Riattivare il PWR LED
+usare il comando "confset" senza virgolette e cancellare le righe:
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=on
+
+########################################################
+
+4) Info sulla disattivazione dell HDMI, della consol e di ssh
+se non si usa un monitor é utile turn off the HDMI e a questo punto anche la cosol linux, in modo da avere ancora un servizio in meno all'vvio.
+É ancora possibile accedere all'rpi via ssh.
+
+Una volta raggiunto un certo setup, si potrebbe pensare di disattivare anche l ssh (opzione 6 del comando "twk").
+Avremmo come task attivo solo il player/players scelti e/o LMS.
+
+MA NON SARÀ PIÙ POSSIBILE ACCEDERE ALL'RPI:
+per ripristinare il tutto bisogna collegare l SD card a un altro PC con linux.
+
+a) montare le due partizioni
+
+mount /dev/sdX2 /mountPoint/
+mount /dev/sdX1 /mountPoint/boot
+
+b) editare il file config.txt
+
+nano /mountPoint/boot/config.txt
+
+cancellare la riga --> hdmi_blanking=2
+
+c) dare il comando
+
+echo "x1:12345:respawn:/sbin/agetty 38400 console linux" >> /mountPoint/etc/inittab
+
+d) smontare l'SD card
+umount /mountPoint/boot
+umount /mountPoint
+
+e) riattivare ssh
+fatto partire l Rpi collegato ad un monitor, fare il login e dare il comando
+
+rc-update add sshd default
+
+al prossimo riavvio ssh sará attivo
+
+per attivarlo subito
+
+rc-service sshd start
+oppure
+/etc/init.d/sshd start
+
+###########################################################
+
+5) modifica parametri del kernel rete/LAN
+
+Questa opzione modifica alcuni parametri del kernel sulla rete.
+
+offre 5 opzioni diverse e intercambiabile compresa il ripristino delle impostazioni originali
+
+############################################################
+
+6) Rimouvere la ricerca dello swap al boot e del relativo servizio
+
+Se non si usa una partizione di swap (com'é di default) potrebbe essere utile apportare questa modifica

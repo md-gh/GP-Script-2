@@ -1,0 +1,166 @@
+{
+  "name": "Player E. MPD Resample SRC",
+  "script_path": "/opt/.gentooplayer/web/scripts/mpd_ls.sh",
+  "description": "Mpd parameters ([**INFO**](https://linux.die.net/man/5/mpd.conf) [**INFO2**](https://www.musicpd.org/doc/html/)) \n **Use mmap (ALSA):** Setting this allows you to use memory-mapped I/O. Certain hardware setups may benefit from this, but most do not. Most users do not need to set this. The default is to not use memory-mapped I/O. \n **Buffer Time:** Sets the device’s buffer time in microseconds. Don’t change unless you know what you’re doing.Increasing it may help to reduce or eliminate skipping on certain setups. Most users do not need to change this. The default is 500000 microseconds (0.5 seconds). \n **Period Time:** Sets the device’s period time in microseconds. Don’t change unless you really know what you’re doing.Increasing this can reduce CPU usage while lowering it can reduce underrun errors on bandwidth-limited devices. Some users have reported good results with this set to 50000, but not all devices support values this high. Most users do not need to change this. The default is 256000000 / sample_rate(kHz), or 5804 microseconds for CD-quality audio. \n **Mixer Type:** Specifies which mixer should be used for this audio output: the hardware mixer (available for ALSA, OSS and PulseAudio), the software mixer or no mixer none. By default, the hardware mixer is used for devices which support it, and none for the others. \n **Audio Buffer Size:** Adjust the size of the internal audio buffer. Default is 4 MB.This specifies the size of the audio buffer in kibibytes. The default is 2048, large enough for nearly 12 seconds of CD-quality audio. \n **Type resample:** \n **0:** Band limited sinc interpolation, best quality, 97dB SNR, 96% BW. \n **1:** Band limited sinc interpolation, medium quality, 97dB SNR, 90% BW. \n **2:** Band limited sinc interpolation, fastest, 97dB SNR, 80% BW. \n **3:** Zero order hold interpolator, very fast, very poor quality with audible distortions. \n **4:** Zero order hold interpolator, very fast, very poor quality with audible distortions. \n . \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Audiocard",
+      "param": "-b",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/card"
+      },
+      "required": true,
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/card.sh"
+      },
+      "description": "Select AudioCard"
+    },
+    {
+      "name": "Use mmap (ALSA)",
+      "param": "-c",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/mmap"
+      },
+      "values": [
+        "yes",
+        "no"
+      ],
+      "description": "Setting this allows you to use memory-mapped I/O"
+    },
+    {
+      "name": "Buffer Time",
+      "param": "-d",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/buffert"
+      },
+      "values": [
+        "default",
+        "enable"
+      ],
+      "description": "Enable sets the device’s buffer time in microseconds."
+    },
+    {
+      "name": "Buffer Time Value",
+      "param": "-e",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/mpd/buffertv"
+      },
+      "required": true,
+      "description": "This sets the length of the hardware sample buffer in microseconds"
+    },
+    {
+      "name": "Period Time",
+      "param": "-f",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/ptime"
+      },
+      "values": [
+        "default",
+        "enable"
+      ],
+      "description": "This enable sets the time between hardware sample transfers in microseconds"
+    },
+    {
+      "name": "Period Time Value",
+      "param": "-g",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/mpd/ptimev"
+      },
+      "description": "This sets the time between hardware sample transfers in microseconds"
+    },
+    {
+      "name": "Mixer Type",
+      "param": "-h",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/mixtipe"
+      },
+      "values": [
+        "none",
+        "hardware",
+        "software"
+      ],
+      "description": "Specifies which mixer should be used for this audio output"
+    },
+    {
+      "name": "Audio Buffer Size",
+      "param": "-i",
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/mpd/abuffer"
+      },
+      "description": "This specifies the size of the audio buffer in kibibytes."
+    },
+    {
+      "name": "Type Resample",
+      "param": "-l",
+      "required": true,
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/tresample"
+      },
+      "values": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "description": "The interpolator type. See below for a list of known types."
+    },
+    {
+      "name": "Sample Rate",
+      "param": "-m",
+      "required": true,
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/sr"
+      },
+      "values": [
+        "44100",
+        "48000",
+        "88200",
+        "96000",
+        "176400",
+        "192000",
+        "352800",
+        "384000",
+        "705600",
+        "784000"
+      ],
+      "description": "Select sample rate of audio that is sent to the audio output device"
+    },
+    {
+      "name": "Bit per Sample",
+      "param": "-n",
+      "required": true,
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/bit"
+      },
+      "values": [
+        "16",
+        "24",
+        "32"
+      ],
+      "description": "Select bits per sample of audio that is sent to the audio output device."
+    },
+    {
+      "name": "Number Channels",
+      "param": "-o",
+      "required": true,
+      "type": "int",
+      "default": {
+        "script": "cat /etc/default/web/mpd/channels"
+      },
+      "description": "Select number of channels of audio that is sent to the audio output device."
+    }
+  ]
+}

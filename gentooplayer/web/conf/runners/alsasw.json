@@ -1,0 +1,18 @@
+{
+  "name": "System A. Alsa version switching",
+  "script_path": "/opt/.gentooplayer/web/scripts/alsasw.sh",
+  "description": "**Switching alsa version**  \n . \n **Select Alsa Version** ([**Info Alsa Version on Gentoo**](https://packages.gentoo.org/packages/media-libs/alsa-lib)) \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "List ALSA version",
+      "param": "-c",
+      "type": "list",
+      "required": true,
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/alsa/alsasw.sh"
+      },
+      "description": "List alsa version"
+    }
+  ]
+}

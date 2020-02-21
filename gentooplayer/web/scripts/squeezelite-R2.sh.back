@@ -1,0 +1,148 @@
+#!/bin/bash
+. /opt/.gentooplayer/function/fcommands.sh
+
+set -e
+
+repeats=1
+#text="I'm called"
+filename='/etc/conf.d/squeezelite-R2-conf'
+clear=false
+
+while (( $# >= 1 ))
+do
+key="$1"
+
+case $key in
+    -a)
+     time="$2"
+     shift # past argument
+     ;;
+    -m)
+     enable="$2"
+     shift # past argument
+     ;;
+    -t)
+     audiocard="$2"
+     shift # past argument
+    ;;
+    -d)
+    dsd="$2"
+    shift # past argument
+    ;;
+    -r)
+    minsr="$2"
+    shift # past argument
+    ;;
+    -R)
+    maxsr="$2"
+    shift # past argument
+    ;;
+    -b)
+    btime="$2"
+    shift # past argument
+    ;;
+    -p)
+    pcount="$2"
+    shift # past argument
+    ;;
+    -s)
+    sformat="$2"
+    shift # past argument
+    ;;
+    -u)
+    mmap="$2"
+    shift # past argument
+    ;;
+    -i)
+    ibuffer="$2"
+    shift # past argument
+    ;;
+    -o)
+    obuffer="$2"
+    shift # past argument
+    ;;
+    -g)
+    log="$2"
+    shift # past argument
+    ;;
+    *)
+    # unknown option
+    ;;
+esac
+shift # past argument or value
+done
+
+
+card=$(echo $audiocard | awk '{print $2}' | sed 's/\://g')
+cardid=$(cat /proc/asound/card$card/id)
+dev=$(cat /proc/asound/card$card/pcm0p/info | awk 'NR==2' | awk '{print $2}')
+audiocardid="hw:CARD=$cardid,DEV=$dev"
+#echo "audiocardid = $audiocardid"
+
+
+#read -p "Press enter to start writing to the Squeezelite-R2 configfile"
+
+for (( i=0; i<repeats ; i++ ))
+do
+   echo "time=$time" > "$filename"
+   echo "$time" > /etc/default/web/time
+   echo "$enable" > /etc/default/web/enable
+   echo "card=$audiocardid" >> "$filename"
+   echo "$audiocard" > /etc/default/web/card
+   echo "dsd='$dsd'" >> "$filename"
+   echo "$dsd" > /etc/default/web/dsd
+   echo "minsr=$minsr" >> "$filename"
+   echo "$minsr" > /etc/default/web/minsr
+   echo "maxsr=$maxsr" >> "$filename"
+   echo "$maxsr" > /etc/default/web/maxsr
+   echo "btime=$btime" >> "$filename"
+   echo "$btime" > /etc/default/web/btime
+   echo "pcount=$pcount" >> "$filename"
+   echo "$pcount" > /etc/default/web/pcount
+   echo "sformat=$sformat" >> "$filename"
+   echo "$sformat" > /etc/default/web/sformat
+   echo "mmap=$mmap" >> "$filename"
+   echo "$mmap" > /etc/default/web/mmap
+   echo "ibuffer=$ibuffer" >> "$filename"
+   echo "$ibuffer" > /etc/default/web/ibuffer
+   echo "obuffer=$obuffer" >> "$filename"
+   echo "$obuffer" > /etc/default/web/obuffer
+   echo "$log" > /etc/default/web/log
+done
+
+#echo "File content >> \n"
+#cat "$filename" | grep --color=always -E "time=$time|card=$audiocardid|dsd='$dsd|minsr=$minsr|maxsr=$maxsr|btime=$btime|pcount=$pcount|sformat=$sformat|mmap=$mmap|ibuffer=$ibuffer|obuffer=$obuffer$"
+#cat ~/"$filename" | grep --color=always -E "dsd='$dsd|$"
+
+cat > /etc/conf.d/squeezelite-R2 <<\EOF
+. /etc/conf.d/squeezelite-R2-conf
+
+
+SL_OPTS="-C $time $dsd -o $card -r $minsr-$maxsr -a $btime:$pcount:$sformat:$mmap -b $ibuffer:$obuffer $log -n GentooPlayer-R2 -m 00:e0:4s:78:d1:46"
+EOF
+
+
+if [ "$enable" = "enable" ]; then
+  rc-update add squeezelite-R2 default 2>/dev/null
+fi;
+
+if [ "$enable" = "disable" ]; then
+  rc-update delete squeezelite-R2 default 2>/dev/null
+fi;
+
+if [ "$log" = "info" ]; then
+  echo "log='-d all=info'" >> "$filename"
+fi;
+
+if [ "$log" = "debug" ]; then
+  echo "log='-d all=debug'" >> "$filename"
+fi;
+
+
+/etc/init.d/squeezelite-R2 restart 2>/dev/null
+
+echo
+echo
+
+sleep 2
+audio
