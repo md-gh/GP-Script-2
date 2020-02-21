@@ -51,4 +51,8 @@ case $alsav in
         emerge --ask -k =media-libs/alsa-lib-1.2.1.2 =media-sound/alsa-utils-1.2.1
         /etc/init.d/alsasound restart
         echo -e "alsa switching ok" ;;
+    1.2.2)
+        emerge --ask -k =media-libs/alsa-lib-1.2.2 =media-sound/alsa-utils-1.2.2
+        /etc/init.d/alsasound restart
+        echo -e "alsa switching ok" ;;
 esac
