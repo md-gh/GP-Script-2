@@ -69,6 +69,11 @@ alsasw(){
                     /etc/init.d/alsasound restart
                     echo -e "alsa switching ok"
                     echo -e "$Yellow Wait... $Color_Off" && sleep 5 ; alsasw ;;
+                1.2.2)
+                    emerge --ask -k =media-libs/alsa-lib-1.2.2 =media-sound/alsa-utils-1.2.2
+                    /etc/init.d/alsasound restart
+                    echo -e "alsa switching ok"
+                    echo -e "$Yellow Wait... $Color_Off" && sleep 5 ; alsasw ;;
                 *) echo -e "$Red Invalid choice...$Color_Off" && sleep 2 ; alsasw ;;
             esac
             ;;
