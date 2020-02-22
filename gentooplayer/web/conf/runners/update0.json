@@ -1,5 +1,5 @@
 {
-  "name": "System H. Software Upd/Rem",
+  "name": "System HH. Software Upd/Rem",
   "script_path": "/opt/.gentooplayer/web/scripts/update.sh",
   "description": " ________________________________ \n **Audio Software Update/Remove** \n ________________________________ \n . \n .",
   "working_directory": "/tmp",
@@ -29,9 +29,19 @@
       "name": "Select Software Remove",
       "param": "-b",
       "type": "list",
-      "values": {
-        "script": "cat /etc/default/web/software/remove"
-      },
+      "values": [
+        "squeezelite-R2",
+        "squeezelite",
+        "logitechMediaServer",
+        "hQPlayerEmbedded",
+        "hQPlayer3",
+        "hQPlayer4",
+        "Networkaudiod",
+        "mpd",
+        "upMpdCli",
+        "mpd_Sima",
+        "mympd"
+      ],
       "description": "Select Software"
     }
   ]
