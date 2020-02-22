@@ -54,6 +54,11 @@ case $usoft in
         else
             echo "Squeezelite-R2 is not installed on this system"
         fi
+        if grep -Fxq squeezelite-R2 "/etc/default/web/software/remove"; then
+            echo "OK"
+          else
+            echo "squeezelite-R2" >> /etc/default/web/software/remove
+        fi
         ;;
     Squeezelite)
         if equery --quiet list squeezelite; then
@@ -65,6 +70,11 @@ case $usoft in
             fi
         else
             echo "Squeezelite-R2 is not installed on this system"
+        fi
+        if grep -Fxq Squeezelite "/etc/default/web/software/remove"; then
+            echo "OK"
+          else
+            echo "Squeezelite" >> /etc/default/web/software/remove
         fi
         ;;
     LogitechMediaServer)
