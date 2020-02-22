@@ -33,7 +33,8 @@
 	#/////////////////////////////////////////////////////////////////////////////////////
 	#Globals
 	#/////////////////////////////////////////////////////////////////////////////////////
-	DIETPI_VERSION="$(sed -n 1p /opt/.gentooplayer/GentooPlayer/gentooplayer/.version).$(sed -n 2p /opt/.gentooplayer/GentooPlayer/gentooplayer/.version)"
+	#DIETPI_VERSION="$(sed -n 1p /opt/.gentooplayer/GentooPlayer/gentooplayer/.version).$(sed -n 2p /opt/.gentooplayer/GentooPlayer/gentooplayer/.version)"
+	DIETPI_VERSION="$(sed -n 1p /etc/default/.GP-version).$(sed -n 2p /etc/default/.GP-version)$(sed -n 3p /etc/default/.GP-version)"
 	IMAGE_ADDITIONAL_CREDITS=$(sed -n 8p /opt/.gentooplayer/GentooPlayer/gentooplayer/.hw_model)
 
 	IP_ADDRESS=$(sed -n 4p /opt/.gentooplayer/GentooPlayer/gentooplayer/.network)
