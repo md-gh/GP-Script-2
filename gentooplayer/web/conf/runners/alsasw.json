@@ -5,6 +5,14 @@
   "working_directory": "/tmp",
   "parameters": [
     {
+      "name": "Current Version",
+      "type": "text",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/script/alsa/alsacurrent.sh"
+      },
+      "description": "current version"
+    },
+    {
       "name": "List ALSA version",
       "param": "-c",
       "type": "list",
