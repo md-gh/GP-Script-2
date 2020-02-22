@@ -252,7 +252,7 @@ case $rsoft in
     squeezelite-R2)
         if equery --quiet list squeezelite-R2; then
             rc-update del squeezelite-R2 default
-            emerge -C squeezelite-R2
+            emerge -C squeezelite-R2 && sed -i '/squeezelite-R2/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "squeezelite-R2 has been removed"
         else
@@ -262,7 +262,7 @@ case $rsoft in
     squeezelite)
         if equery --quiet list squeezelite; then
             rc-update del squeezelite default
-            emerge -C squeezelite
+            emerge -C squeezelite && sed -i '/Squeezelite/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "squeezelite has been removed"
         else
@@ -272,7 +272,7 @@ case $rsoft in
     logitechMediaServer)
         if equery --quiet list logitechmediaserver-bin; then
             rc-update del logitechmediaserver default
-            emerge -C logitechmediaserver-bin
+            emerge -C logitechmediaserver-bin && sed -i '/logitechMediaServer/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "LogitechMediaServer has been removed"
         else
@@ -282,7 +282,7 @@ case $rsoft in
     hQPlayerEmbedded)
         if equery --quiet list hqplayerd-bin; then
             rc-update del hqplayerd default
-            emerge -C hqplayerd-bin
+            emerge -C hqplayerd-bin && sed -i '/hQPlayerEmbedded/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "HQPlayerEmbedded has been removed"
         else
@@ -291,7 +291,7 @@ case $rsoft in
         ;;
     hQPlayer3)
         if equery --quiet list hqplayer-bin; then
-            emerge -C hqplayer-bin
+            emerge -C hqplayer-bin && sed -i '/hQPlayer3/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "HQPlayer3 has been removed"
         else
@@ -300,7 +300,7 @@ case $rsoft in
         ;;
     hQPlayer4)
         if equery --quiet list hqplayer4desktop-bin; then
-            emerge -C hqplayer4desktop-bin
+            emerge -C hqplayer4desktop-bin && sed -i '/hQPlayer4/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "HQPlayer4 has been removed"
         else
@@ -310,17 +310,17 @@ case $rsoft in
     hQPlayer4)
         if equery --quiet list networkaudiod-bin; then
             rc-update del networkaudiod default
-            emerge -C networkaudiod-bin
+            emerge -C networkaudiod-bin && sed -i '/Networkaudiod/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "networkaudiod has been removed"
         else
-            echo "networkaudiod is not installed on the system"
+            echo "networkaudiod is not installed on the system" && sed -i '/Networkaudiod/c\' "/etc/default/web/software/remove"
         fi
         ;;
     mpd)
         if equery --quiet list media-sound/mpd; then
             rc-update del mpd default
-            emerge -C media-sound/mpd
+            emerge -C media-sound/mpd && sed -i '/MPD/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "Mpd has been removed"
         else
@@ -330,11 +330,11 @@ case $rsoft in
     upMpdCli)
         if equery --quiet list upmpdcli; then
             rc-update del upmpdcli default
-            emerge -C upmpdcli
+            emerge -C upmpdcli && sed -i '/upMpdCli/c\' "/etc/default/web/software/remove"
             emerge --depclean
             echo "UpMpdCli has been removed"
         else
-            echo "UpMpdCli is not installed on the system"
+            echo "UpMpdCli is not installed on the system" && sed -i '/upMpdCli/c\' "/etc/default/web/software/remove"
         fi
         ;;
     mympd)
@@ -354,14 +354,14 @@ case $rsoft in
             rm -rf /etc/opt/mympd
             rm -rf /etc/webapps/mympd
             rc-update del mympd default
-            echo "MYmpd has been removed"
+            echo "MYmpd has been removed" && sed -i '/mympd/c\' "/etc/default/web/software/remove"
         ;;
     mpd_sima)
         if ls /opt/sima; then
             rm -r /opt/sima
-            echo "mpd_sima has been removed"
+            echo "mpd_sima has been removed" && sed -i '/mpd_Sima/c\' "/etc/default/web/software/remove"
         else
-            echo "mpd_sima is already updated"
+            echo "mpd_sima is already updated" && sed -i '/mpd_Sima/c\' "/etc/default/web/software/remove"
         fi
         ;;
 esac
