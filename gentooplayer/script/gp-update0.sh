@@ -1,6 +1,12 @@
 #!/bin/bash
 . /opt/.gentooplayer/function/fcolors.sh
 
+echo ""
+echo ""
+echo -e "Local overlay and gentooplayer scripts will be updated"
+
+sleep 2
+
 cd /tmp
 rm -r GP-overlay* 2>/dev/null
 rm -r script* 2>/dev/null
@@ -23,14 +29,14 @@ else
 fi
 
 if
-rm -rf /usr/local/portage/antonellocaroli; then
+rm -rf /var/db/repos/antonellocaroli; then
     echo -e "\n \e[38;5;154m[OK]\e[0m\n"
 else
     echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
 fi
 
 if
-mv GP-overlay/ /usr/local/portage/antonellocaroli; then
+mv GP-overlay/ /var/db/repos/antonellocaroli; then
     echo -e "\n \e[38;5;154m[OK]\e[0m\n"
 else
     echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
