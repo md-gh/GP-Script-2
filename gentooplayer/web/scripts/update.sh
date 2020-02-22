@@ -259,7 +259,7 @@ case $rsoft in
             echo "Squeezelite-R2 is not installed on the system"
         fi
         ;;
-    squeezelite)
+    Squeezelite)
         if equery --quiet list squeezelite; then
             rc-update del squeezelite default
             emerge -C squeezelite && sed -i '/Squeezelite/c\' "/etc/default/web/software/remove"
@@ -317,7 +317,7 @@ case $rsoft in
             echo "networkaudiod is not installed on the system" && sed -i '/Networkaudiod/c\' "/etc/default/web/software/remove"
         fi
         ;;
-    mpd)
+    MPD)
         if equery --quiet list media-sound/mpd; then
             rc-update del mpd default
             emerge -C media-sound/mpd && sed -i '/MPD/c\' "/etc/default/web/software/remove"
