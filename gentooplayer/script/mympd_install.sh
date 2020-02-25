@@ -3,7 +3,7 @@
 
 mympd --version | sed -n 1p > /tmp/mympdv
 
-versionat=6.1.0
+versionat=6.2.0
 versioninst=$(cat /tmp/mympdv | awk '{print $2}')
 
 if [ "$versionat" == "$versioninst" ]; then
