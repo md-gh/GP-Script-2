@@ -17,6 +17,6 @@ $BBlack gp-update$Color_Off
  and
  ssh: command $BBlack mympd-up$Color_Off $BGreen(faster)$Color_Off
  or
- web-interface > System H. Software Upd/Rem > Select Software Update>MyMpd > EXCUTE $BRed(slow)$Color_Off
+ web-interface > System H. Software Upd/Rem > Select Software Update > MyMpd > EXCUTE $BRed(slow)$Color_Off
  or
  web-interface > System A. Excute Command > mympd-up $BGreen(faster)$Color_Off"
