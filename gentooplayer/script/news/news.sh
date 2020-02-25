@@ -12,11 +12,4 @@ echo -e "$BBlack 25.02.19 A new version of MyMpd is available v.6.2.0$Color_Off"
 echo
 echo -e "Changelog: https://github.com/jcorporation/myMPD/releases/tag/v6.2.0"
 echo
-echo "to update:
-$BBlack gp-update$Color_Off
-and
-ssh: command $BBlack mympd-up$Color_Off
-or
-web-interface>System H. Software Upd/Rem>Select Software Update>MyMpd>EXCUTE
-or
-web-interface>System A. Excute Command>mympd-up"
+echo "to update:\n$BBlack gp-update$Color_Off\nand\nssh: command $BBlack mympd-up$Color_Off\nor\nweb-interface>System H. Software Upd/Rem>Select Software Update>MyMpd>EXCUTE\nor\nweb-interface>System A. Excute Command>mympd-up"
