@@ -7,7 +7,7 @@ echo -e "$BRed GentooPlayer $Color_Off $BBlue $gpmodel $Color_Off $BBlack versio
 echo
 echo -e "$BBlack Latest News:$Color_Off"
 echo
-
+echo -e " \e[38;5;154m────────────────────────────────────────────\e[0m"
 echo -e "$BBlack 25.02.19 A new version of MyMpd is available v.6.2.0$Color_Off"
 echo
 echo -e "Changelog: https://github.com/jcorporation/myMPD/releases/tag/v6.2.0"
@@ -20,3 +20,4 @@ $BBlack gp-update$Color_Off
  web-interface > System H. Software Upd/Rem > Select Software Update > MyMpd > EXCUTE $BRed(slow)$Color_Off
  or
  web-interface > System A. Excute Command > mympd-up $BGreen(faster)$Color_Off"
+echo -e " \e[38;5;154m────────────────────────────────────────────\e[0m"
