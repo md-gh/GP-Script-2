@@ -593,3 +593,7 @@ function kernelupsw {
 function mympd-up {
     /opt/.gentooplayer/script/mympd_install.sh
 }
+##########################
+function news {
+    /opt/.gentooplayer/script/news/news.sh
+}
