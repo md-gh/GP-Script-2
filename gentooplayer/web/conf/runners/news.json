@@ -1,0 +1,6 @@
+{
+  "name": "1. News",
+  "script_path": "/opt/.gentooplayer/scripts/news/news.sh",
+  "description": "**GentooPlayer News** \n in shell use **news** commnd for visualizing news or click exute",
+  "working_directory": "/tmp"
+}
