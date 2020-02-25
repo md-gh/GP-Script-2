@@ -19,5 +19,5 @@ $BBlack gp-update$Color_Off
  or
  web-interface > System H. Software Upd/Rem > Select Software Update > MyMpd > EXCUTE $BRed(slow)$Color_Off
  or
- web-interface > System A. Excute Command > mympd-up $BGreen(faster)$Color_Off"
+ web-interface > System A. Excute Command > mympd-up > EXCUTE $BGreen(faster)$Color_Off"
 echo -e " \e[38;5;154m────────────────────────────────────────────\e[0m"
