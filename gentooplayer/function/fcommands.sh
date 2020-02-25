@@ -589,3 +589,7 @@ function webremove {
 function kernelupsw {
     /opt/.gentooplayer/script/kernelsw.sh
 }
+##########################
+function mympd-up {
+    /opt/.gentooplayer/script/mympd_install.sh
+}
