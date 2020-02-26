@@ -4,7 +4,6 @@
 set -e
 
 repeats=1
-#text="I'm called"
 filename='/etc/conf.d/squeezelite-R2-conf'
 clear=false
 

@@ -4,7 +4,6 @@
 set -e
 
 repeats=1
-#text="I'm called"
 filename='/etc/conf.d/mpdbp-conf'
 clear=false
 
@@ -73,10 +72,7 @@ card=$(echo $audiocard | awk '{print $2}' | sed 's/\://g')
 cardid=$(cat /proc/asound/card$card/id)
 dev=$(cat /proc/asound/card$card/pcm0p/info | awk 'NR==2' | awk '{print $2}')
 audiocardid="hw:CARD=$cardid,DEV=$dev"
-#echo "audiocardid = $audiocardid"
 
-
-#read -p "Press enter to start writing to the Squeezelite-R2 configfile"
 
 for (( i=0; i<repeats ; i++ ))
 do
@@ -94,9 +90,6 @@ do
     echo "$channels" > /etc/default/web/mpd/channels
 done
 
-#echo "File content >> \n"
-#cat "$filename" | grep --color=always -E "time=$time|card=$audiocardid|dsd='$dsd|minsr=$minsr|maxsr=$maxsr|btime=$btime|pcount=$pcount|sformat=$sformat|mmap=$mmap|ibuffer=$ibuffer|obuffer=$obuffer$"
-#cat ~/"$filename" | grep --color=always -E "dsd='$dsd|$"
 
 if [ "$enable" = "enable" ]; then
     rc-update add mpd default 2>/dev/null

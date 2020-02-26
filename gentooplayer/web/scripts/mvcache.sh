@@ -22,10 +22,7 @@ do
     shift # past argument or value
 done
 
-#oper=$(awk '{print $1}' <<< "$alsav")
 
-#alsasw=$(ls -1v /usr/portage/packages/media-libs/ | sed 's/.tbz2//' | sed 's/alsa-lib-//' | cat -n | awk '{if(NR=='$oper') print $0}' | awk '{print $2}')
-#echo "$kernn"
 case $move in
     MoveRoonDatabase)
         mkdir -P /backup/roondatabase

@@ -1,11 +1,7 @@
 #!/bin/bash
 
-#set -e
 
 repeats=1
-#text="I'm called"
-#filename='/etc/conf.d/mpdbp-conf'
-#clear=false
 
 while (( $# >= 1 ))
 do

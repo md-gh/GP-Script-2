@@ -4,7 +4,6 @@
 set -e
 
 repeats=1
-#text="I'm called"
 filename='/etc/conf.d/squeezelite-R2-conf'
 clear=false
 
@@ -81,7 +80,7 @@ card=$(echo $audiocard | awk '{print $2}' | sed 's/\://g')
 cardid=$(cat /proc/asound/card$card/id)
 dev=$(cat /proc/asound/card$card/pcm0p/info | awk 'NR==2' | awk '{print $2}')
 audiocardid="hw:CARD=$cardid,DEV=$dev"
-#echo "audiocardid = $audiocardid"
+
 for (( i=0; i<repeats ; i++ ))
 do
     echo "$time" > /etc/default/web/R2/time
