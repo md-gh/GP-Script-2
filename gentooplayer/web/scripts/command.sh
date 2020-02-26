@@ -32,8 +32,8 @@ done
 #echo "$kernn"
 . /opt/.gentooplayer/function/fcommands.sh
 . /opt/.gentooplayer/function/fcolors.sh
-if grep -Fxq $command "/etc/default/web/command"; then
-    echo "ok"
+if grep -Fxq "$command" "/etc/default/web/command"; then
+    echo ";-)"
 else
     echo "$command" >> "/etc/default/web/command"
 fi
