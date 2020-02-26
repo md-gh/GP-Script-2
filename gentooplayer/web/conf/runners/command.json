@@ -5,6 +5,16 @@
   "working_directory": "/tmp",
   "parameters": [
     {
+      "name": "Use a recent command",
+      "param": "-b",
+      "type": "list",
+      "default":"",
+      "values": {
+        "script": "cat /etc/default/web/command"
+      },
+      "description": "type command to excute"
+    },
+    {
       "name": "Type command",
       "param": "-a",
       "type": "text",

@@ -15,6 +15,10 @@ do
             command="$2"
             shift # past argument
             ;;
+        -b)
+            ccommand="$2"
+            shift # past argument
+            ;;
         *)
             # unknown option
             ;;
@@ -29,3 +33,10 @@ done
 . /opt/.gentooplayer/function/fcommands.sh
 . /opt/.gentooplayer/function/fcolors.sh
 $command 2>/dev/null
+$ccommand 2>/dev/nul
+
+if grep -Fxq $ccommand "/etc/default/web/command"; then
+    echo "ok"
+else
+    echo "$ccommand" >> "/etc/default/web/command"
+fi
