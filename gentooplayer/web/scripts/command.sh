@@ -32,11 +32,11 @@ done
 #echo "$kernn"
 . /opt/.gentooplayer/function/fcommands.sh
 . /opt/.gentooplayer/function/fcolors.sh
-$command 2>/dev/null
-$ccommand 2>/dev/nul
-
 if grep -Fxq $command "/etc/default/web/command"; then
     echo "ok"
 else
     echo "$command" >> "/etc/default/web/command"
 fi
+
+$command 2>/dev/null && exit 0
+$ccommand 2>/dev/nul && exit 0
