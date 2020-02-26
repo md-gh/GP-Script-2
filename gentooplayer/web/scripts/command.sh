@@ -38,5 +38,5 @@ else
     echo "$command" >> "/etc/default/web/command"
 fi
 
-$command 2>/dev/null && exit 0
-$ccommand 2>/dev/nul && exit 0
+$command 2>/dev/null
+$ccommand 2>/dev/nul
