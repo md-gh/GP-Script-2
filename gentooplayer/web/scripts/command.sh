@@ -35,8 +35,8 @@ done
 $command 2>/dev/null
 $ccommand 2>/dev/nul
 
-if grep -Fxq $ccommand "/etc/default/web/command"; then
+if grep -Fxq $command "/etc/default/web/command"; then
     echo "ok"
 else
-    echo "$ccommand" >> "/etc/default/web/command"
+    echo "$command" >> "/etc/default/web/command"
 fi
