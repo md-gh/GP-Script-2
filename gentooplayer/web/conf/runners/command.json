@@ -10,7 +10,7 @@
       "type": "list",
       "default":"",
       "values": {
-        "script": "cat /etc/default/web/command"
+        "script": "cat /etc/default/web/command | sort -V"
       },
       "description": "type command to excute"
     },
