@@ -40,6 +40,7 @@ else
         rsync -a /etc/default /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
         rsync -a /etc/local.d /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
         rsync -a /etc/conf.d /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
+        rsync -a /etc/fstab /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
         rsync -a /etc/mpd.conf /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
         ls -1v /etc/runlevels/default/ > /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"/rcdefault
         echo -e "$Green"Backup completed"$Color_Off"
