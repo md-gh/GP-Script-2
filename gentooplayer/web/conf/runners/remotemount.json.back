@@ -21,11 +21,14 @@
       "description": "List Disk nfs"
     },
     {
-      "name": "Type IP Server",
+      "name": "Select IP Server",
       "param": "-c",
       "required": true,
-      "type": "text",
-      "description": "Type IP Server"
+      "type": "list",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/mount/ipserver.sh"
+      },
+      "description": "Select IP Server"
     },
     {
       "name": "Sharing type",
