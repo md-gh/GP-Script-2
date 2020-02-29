@@ -34,7 +34,7 @@ case $move in
         file /root/.RoonServer/Database
         sleep 5 ;;
     MoveLmsCache)
-        mkdir /backup/LMScache
+        mkdir -P /backup/LMScache
         echo "Copying Database on"
         cp -R /var/lib/logitechmediaserver/cache /backup/LMScache/
         chown -R logitechmediaserver:logitechmediaserver /backup/LMScache/
