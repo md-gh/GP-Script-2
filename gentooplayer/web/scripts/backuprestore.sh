@@ -37,7 +37,7 @@ if [ ${#dirb} -eq 0 ]; then
 else
     if [[ $(findmnt -M "/media/$dirb") ]]; then
         echo "The directory $disk has been mounted"
-        rsync -a /etc/default /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
+        rsync -a /etc/default /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')" --exclude .GP-version
         rsync -a /etc/local.d /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
         rsync -a /etc/conf.d /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
         rsync -a /etc/mpd.conf /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
