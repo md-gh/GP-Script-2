@@ -25,7 +25,7 @@ done
 
 case $move in
     MoveRoonDatabase)
-        mkdir -P /backup/roondatabase
+        mkdir -p /backup/roondatabase
         echo "Copying Database on"
         cp -R /root/.RoonServer/Database /backup/roondatabase/
         rm -rf /root/.RoonServer/Database
@@ -34,7 +34,7 @@ case $move in
         file /root/.RoonServer/Database
         sleep 5 ;;
     MoveLmsCache)
-        mkdir -P /backup/LMScache
+        mkdir -p /backup/LMScache
         echo "Copying Database on"
         cp -R /var/lib/logitechmediaserver/cache /backup/LMScache/
         chown -R logitechmediaserver:logitechmediaserver /backup/LMScache/
