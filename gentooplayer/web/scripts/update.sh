@@ -365,4 +365,4 @@ case $rsoft in
         ;;
 esac
 
-/etc/init.d/web restart
+#/etc/init.d/web restart
