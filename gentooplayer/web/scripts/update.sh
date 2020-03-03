@@ -31,11 +31,11 @@ fi
 
 /opt/.gentooplayer/script/gp-update0.sh
 
-if [ ${#usoft} -eq 0 ]; then
-    echo "ok"
-else
-    emerge --sync
-fi
+#if [ ${#usoft} -eq 0 ]; then
+#    echo "ok"
+#else
+#    emerge --sync
+#fi
 
 
 case $usoft in
@@ -124,6 +124,7 @@ case $usoft in
         fi
         ;;
     Mpd)
+        emerge --sync
         if equery --quiet list media-sound/mpd; then
             if emerge -p media-sound/mpd | egrep -w "U"; then
                 echo "update Mpd...please wait...."
@@ -136,6 +137,7 @@ case $usoft in
         fi
         ;;
     UpMpdCli)
+        emerge --sync
         if equery --quiet list upmpdcli; then
             if emerge -p upmpdcli | egrep -w "U"; then
                 echo "update UpMpdCli...please wait...."
@@ -151,6 +153,7 @@ case $usoft in
         /opt/.gentooplayer/script/mympd_install.sh
         ;;
     All)
+        emerge --sync
         if equery --quiet list squeezelite-R2; then
             if emerge -p squeezelite-R2 | egrep -w "U"; then
                 echo "update squeezelite-R2...please wait...."
