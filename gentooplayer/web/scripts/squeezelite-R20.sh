@@ -129,7 +129,7 @@ else
 fi
 
 cat > /etc/conf.d/squeezelite-R2 <<EOF
-SL_OPTS="-C $time $dsdd -o $audiocardid -r $minsr-$maxsr $alsapp $buffer $log -n GentooPlayer-R2 -m $mac"
+SL_OPTS="-C $time $dsdd -o $audiocardid -r $minsr-$maxsr $alsapp $buffer $log -n GentooPlayer-R2 -m 00:e0:4s:78:d1:$mac"
 EOF
 
 
