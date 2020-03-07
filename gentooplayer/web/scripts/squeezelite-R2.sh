@@ -96,7 +96,7 @@ do
     echo "$ibuffer" > /etc/default/web/R2/ibuffer
     echo "$obuffer" > /etc/default/web/R2/obuffer
     echo "$log" > /etc/default/web/R2/log
-    echo "$mac" > /etc/default/web/R2/mac
+    echo "$mac" > /etc/default/web/R2/mac0
     echo "$alsap" > /etc/default/web/R2/alsap
 done
 
