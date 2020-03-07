@@ -188,13 +188,11 @@
     {
       "name": "Mac Adresse",
       "param": "-h",
-      "type": "int",
+      "type": "text",
       "default": {
-        "script": "cat /etc/default/web/squeezelite/mac"
+        "script": "cat /etc/default/web/squeezelite/mac0"
       },
       "required": true,
-      "min": "10",
-      "max": "99",
       "description": "Change the mac adresse"
     },
     {

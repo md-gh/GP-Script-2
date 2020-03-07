@@ -140,7 +140,7 @@ do
     echo "$ibuffer" > /etc/default/web/squeezelite/ibuffer
     echo "$obuffer" > /etc/default/web/squeezelite/obuffer
     echo "$log" > /etc/default/web/squeezelite/log
-    echo "$mac" > /etc/default/web/squeezelite/mac
+    echo "$mac" > /etc/default/web/squeezelite/mac0
     echo "$alsap" > /etc/default/web/squeezelite/alsap
     echo "$resample" > /etc/default/web/squeezelite/resample
     echo "$quality" > /etc/default/web/squeezelite/quality
@@ -189,7 +189,7 @@ else
 fi
 
 cat > /etc/conf.d/squeezelite <<EOF
-SL_OPTS="-C $time -W $dsdd -o $audiocardid -r $minsr-$maxsr $alsapp $buffer $resamplerr $log -n GentooPlayer -m 00:f0:4c:68:d1:$mac"
+SL_OPTS="-C $time -W $dsdd -o $audiocardid -r $minsr-$maxsr $alsapp $buffer $resamplerr $log -n GentooPlayer -m $mac"
 EOF
 
 
