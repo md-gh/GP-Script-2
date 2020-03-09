@@ -93,7 +93,7 @@ if [ "$ptime" = "enable" ]; then
     ptimem='period_time ''"'"$ptimev"'"'
 fi
 if [ "$dsd" = "DOP" ]; then
-    dsdd='dsd' 'yes'
+    dsdd='dsd yes'
 fi
 
 cat > /etc/mpd.conf <<EOF
@@ -126,6 +126,7 @@ audio_output {
   use_mmap  "$mmap"
   $btimem
   $ptimem
+  $dsdd
 }
 
 mixer_type   "$mixtype"
