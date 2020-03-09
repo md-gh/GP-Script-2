@@ -65,6 +65,10 @@ do
             channels="$2"
             shift # past argument
             ;;
+        -t)
+            dsd="$2"
+            shift # past argument
+            ;;
         *)
             # unknown option
             ;;
@@ -93,6 +97,7 @@ do
     echo "$bit" > /etc/default/web/mpd/bit
     echo "$channels" > /etc/default/web/mpd/channels
     echo "$treads" > /etc/default/web/mpd/treads
+    echo "$dsd" > /etc/default/web/mpd/dsd
 done
 
 
@@ -110,6 +115,9 @@ fi
 
 if [ "$ptime" = "enable" ]; then
     ptimem='period_time ''"'"$ptimev"'"'
+fi
+if [ "$dsd" = "DOP" ]; then
+    dsdd='dop ''"'"yes"'"'
 fi
 
 cat > /etc/mpd.conf <<EOF
@@ -151,6 +159,7 @@ audio_output {
   use_mmap  "$mmap"
   $btimem
   $ptimem
+  $dsdd
 }
 
 

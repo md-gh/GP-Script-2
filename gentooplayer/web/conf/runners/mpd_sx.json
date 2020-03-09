@@ -175,6 +175,19 @@
         "script": "cat /etc/default/web/mpd/channels"
       },
       "description": "Select number of channels of audio that is sent to the audio output device."
+    },
+    {
+      "name": "DSD",
+      "param": "-t",
+      "type": "list",
+      "default": {
+        "script": "cat /etc/default/web/mpd/dsd"
+      },
+      "values": [
+        "native",
+        "DOP"
+      ],
+      "description": "Specifies DSD mode"
     }
   ]
 }
