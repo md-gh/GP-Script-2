@@ -44,6 +44,10 @@ do
             abuffer="$2"
             shift # past argument
             ;;
+        -t)
+            dsd="$2"
+            shift # past argument
+            ;;
         *)
             # unknown option
             ;;
@@ -68,6 +72,7 @@ do
     echo "$btimev" > /etc/default/web/mpd/buffertv
     echo "$ptime" > /etc/default/web/mpd/ptime
     echo "$ptimev" > /etc/default/web/mpd/ptimev
+    echo "$dsd" > /etc/default/web/mpd/dsd
 done
 
 
@@ -86,6 +91,9 @@ fi
 
 if [ "$ptime" = "enable" ]; then
     ptimem='period_time ''"'"$ptimev"'"'
+fi
+if [ "$dsd" = "DOP" ]; then
+    dsdd='dsd' 'yes'
 fi
 
 cat > /etc/mpd.conf <<EOF
