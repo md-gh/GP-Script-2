@@ -1,6 +1,6 @@
 {
   "name": "System M. Keyboard layout",
-  "script_path": "/opt/.gentooplayer/web/scripts/layout.sh",
+  "script_path": "/opt/.gentooplayer/web/scripts/layot.sh",
   "description": "**Keyboard layout switching**",
   "working_directory": "/tmp",
   "parameters": [
