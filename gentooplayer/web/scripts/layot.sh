@@ -29,7 +29,7 @@ done
 
 layott=$(grep -F "$layot" /opt/.gentooplayer/web/scripts/script/layot/layot | awk '{print $1}')
 
-sed -i '/keymap=/c\keymap='"'"'$layott'"'"'' /etc/conf.d/keymaps
+sed -i '/keymap=/c\keymap='"'""$layott""'"'' /etc/conf.d/keymaps
 
 echo "Keyboard layout switching to $layot"
 
