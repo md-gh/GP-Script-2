@@ -27,7 +27,7 @@ done
 #alsasw=$(ls -1v /usr/portage/packages/media-libs/ | sed 's/.tbz2//' | sed 's/alsa-lib-//' | cat -n | awk '{if(NR=='$oper') print $0}' | awk '{print $2}')
 #echo "$kernn"
 
-layott=$(grep -F $layot layot | awk '{print $1}')
+layott=$(grep -F "$layot" /opt/.gentooplayer/web/scripts/script/layot/layot | awk '{print $1}')
 
 sed -i '/keymap=/c\keymap='"$layott"'' /etc/conf.d/keymaps
 
