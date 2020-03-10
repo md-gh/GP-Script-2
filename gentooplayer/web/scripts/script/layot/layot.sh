@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat /opt/.gentooplayer/web/scripts/script/layot | awk '{print $2}'
+cat /opt/.gentooplayer/web/scripts/script/layot/layot | awk '{print $2}'
