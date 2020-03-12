@@ -60,7 +60,7 @@ esac
 
 diskk=$(echo "$disk" | awk '{print $1}')
 
-xz --decompress gp.img.xz | sudo dd of=/dev/$diskk
+xz --decompress gp.img.xz | dd of=/dev/$diskk
 
 echo
 echo
