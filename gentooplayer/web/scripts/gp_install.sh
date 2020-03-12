@@ -60,6 +60,8 @@ esac
 
 diskk=$(echo "$disk" | awk '{print $1}')
 
+echo "wait...copy image"
+
 xz --decompress gp.img.xz | dd of=/dev/$diskk
 
 echo
