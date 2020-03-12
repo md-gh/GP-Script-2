@@ -29,7 +29,7 @@ done
 
 cd /tmp
 
-rm -r *
+rm -r * 2>/dev/null
 
 gpeb="https://drive.google.com/file/d/15d4NVMHOnS101Um5gIBbBCQs4o-afdVP/view?usp=sharing"
 gpeu="https://drive.google.com/file/d/1iMN4drYfom-J5BoB07Y5nohTgkSLr6dL/view?usp=sharing"
