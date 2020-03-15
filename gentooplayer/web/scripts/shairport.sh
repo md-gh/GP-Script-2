@@ -88,7 +88,7 @@ fi
 if [ "$orate" = "auto" ]; then
     oratee=""
   else
-    oratee="output_rate = "$orate"";
+    oratee="output_rate = "$orate";"
 fi
 
 cat > /etc/shairport-sync.conf <<EOF
