@@ -20,14 +20,10 @@
     {
       "name": "Mixer control name",
       "param": "-b",
-      "type": "list",
+      "type": "text",
       "default": {
         "script": "cat /etc/default/web/shairport/mixername"
       },
-      "values": [
-        "",
-        "PCM"
-      ],
       "description": "the name of the mixer to use to adjust output volume."
     },
     {
