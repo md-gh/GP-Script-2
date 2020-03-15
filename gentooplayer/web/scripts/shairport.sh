@@ -52,6 +52,10 @@ do
             stanby="$2"
             shift # past argument
             ;;
+        -m)
+            port="$2"
+            shift # past argument
+            ;;
         *)
             # unknown option
             ;;
@@ -77,6 +81,7 @@ do
     echo "$mmap" > /etc/default/web/shairport/mmap
     echo "$timing" > /etc/default/web/shairport/timing
     echo "$stanby" > /etc/default/web/shairport/stanby
+    echo "$port" > /etc/default/web/shairport/port
 done
 
 if [ ${#mixername} -eq 0 ]; then
@@ -138,6 +143,11 @@ $bsizee
 $mmapp
 $timingg
 $stanbyy
+}
+
+general =
+{
+port = $port;
 }
 EOF
 

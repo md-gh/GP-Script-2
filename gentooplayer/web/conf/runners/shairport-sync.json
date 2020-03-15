@@ -145,5 +145,14 @@
       ],
       "description": "standby mode"
     }
+    {
+      "name": "Port",
+      "param": "-m",
+      "type": "text",
+      "default": {
+        "script": "cat /etc/default/web/shairport/port"
+      },
+      "description": "standby mode"
+    }
   ]
 }
