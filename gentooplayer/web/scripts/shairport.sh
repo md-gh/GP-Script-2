@@ -94,10 +94,10 @@ fi
 if [ "$oformat" = "auto" ]; then
     oformatt=""
   else
-    oformatt="output_format = "$oformat";"
+    oformatt="output_format = "'"'""$oformat""'"'";"
 fi
 
-syncc="disable_synchronization = "$oformat";"
+syncc="disable_synchronization = "$sync";"
 
 
 cat > /etc/shairport-sync.conf <<EOF
