@@ -144,7 +144,7 @@
         "never"
       ],
       "description": "standby mode"
-    }
+    },
     {
       "name": "Port",
       "param": "-m",
