@@ -82,7 +82,7 @@ done
 if [ ${#mixername} -eq 0 ]; then
     mixernamee=""
 else
-    mixername="mixer_control_name = "$mixername";
+    mixername="mixer_control_name = "$mixername"";
 fi
 
 if [ "$orate" = "auto" ]; then
