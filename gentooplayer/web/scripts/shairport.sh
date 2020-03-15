@@ -97,8 +97,33 @@ if [ "$oformat" = "auto" ]; then
     oformatt="output_format = "'"'""$oformat""'"'";"
 fi
 
-syncc="disable_synchronization = "$sync";"
+syncc="disable_synchronization = "'"'""$sync""'"'";"
 
+if [ ${#psize} -eq 0 ]; then
+    psizee=""
+else
+    psizee="period_size = "$psize";"
+fi
+
+if [ ${#bsize} -eq 0 ]; then
+    bsizee=""
+else
+    bsizee="buffer_size = "$bsize";"
+fi
+
+mmapp="use_mmap_if_available = "'"'""$mmap""'"'";"
+
+if [ "$timing" = "auto" ]; then
+    timingg=""
+  else
+    timingg="use_precision_timing = "'"'""$timing""'"'";"
+fi
+
+if [ "$stanby" = "auto" ]; then
+    stanbyy=""
+  else
+    stanbyy="disable_standby_mode = "'"'""$stanby""'"'";"
+fi
 
 cat > /etc/shairport-sync.conf <<EOF
 alsa =
@@ -108,6 +133,11 @@ $mixernamee
 $oratee
 $oformatt
 $syncc
+$psizee
+$bsizee
+$mmapp
+$timingg
+$stanbyy
 }
 EOF
 
