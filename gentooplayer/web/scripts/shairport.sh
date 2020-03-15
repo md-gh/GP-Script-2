@@ -82,7 +82,7 @@ done
 if [ ${#mixername} -eq 0 ]; then
     mixernamee=""
 else
-    mixername="mixer_control_name = "$mixername"";
+    mixernamee="mixer_control_name = "'"'""$mixername""'"'";
 fi
 
 if [ "$orate" = "auto" ]; then
@@ -95,7 +95,7 @@ cat > /etc/shairport-sync.conf <<EOF
 alsa =
 {
 output_device = "$audiocardid";
-$mixername
+$mixernamee
 $oratee
 }
 EOF
