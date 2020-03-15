@@ -79,40 +79,29 @@ do
     echo "$stanby" > /etc/default/web/shairport/stanby
 done
 
-
-
-if [ "$log" = "info" ]; then
-    log='-d all=info'
-fi;
-
-if [ "$log" = "debug" ]; then
-    log='-d all=debug'
-fi;
-
-if [ ${#ibuffer} -eq 0 ]; then
-    buffer=""
+if [ ${#mixername} -eq 0 ]; then
+    mixernamee=""
 else
-    buffer="-b $ibuffer:$obuffer"
+    mixername="mixer_control_name = '"$mixername"'"
 fi
 
-if [ ${#dsd} -eq 0 ]; then
-    dsdd=""
-else
-    dsdd="$dsd"
+if [ "$orate" = "auto" ]; then
+    oratee=""
+  else
+    oratee="output_rate = "$orate""
 fi
 
-if [ "$alsap" = "enable" ]; then
-    alsapp="-a $btime:$pcount:$sformat:$mmap"
-else
-    alsapp=""
-fi
-
-cat > /etc/conf.d/squeezelite-R2 <<EOF
-SL_OPTS="-C $time $dsdd -o $audiocardid -r $minsr-$maxsr $alsapp $buffer $log -n GentooPlayer-R2 -m $mac"
+cat > /etc/shairport-sync.conf <<EOF
+alsa =
+{
+output_device = $audiocardid;
+$mixername
+$oratee
+}
 EOF
 
 
-/etc/init.d/squeezelite-R2 restart 2>/dev/null
+/etc/init.d/shairport-sync restart 2>/dev/null
 
 echo
 echo
