@@ -122,6 +122,13 @@ else
     echo -e "minimserver             [\033[31;1mDisabled\e[0m]"
 fi
 
+if
+rc-update show -v | grep shairport-sync | grep default 1>/dev/null; then
+    echo -e "shairport-sync             [\033[32;1mEnabled\e[0m]"
+else
+    echo -e "shairport-sync             [\033[31;1mDisabled\e[0m]"
+fi
+
 echo
 alsacap
 
