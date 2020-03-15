@@ -68,6 +68,10 @@ do
             mserver="$2"
             shift # past argument
             ;;
+        -q)
+            shair="$2"
+            shift # past argument
+            ;;
         *)
             # unknown option
             ;;
@@ -165,6 +169,13 @@ if [ "$mserver" = "enable" ]; then
     rc-service minimserver restart 2>/dev/null
 else
     rc-update del minimserver default 2>/dev/null
+fi
+#
+if [ "$shair" = "enable" ]; then
+    rc-update add shairport-sync default 2>/dev/null
+    rc-service shairport-sync restart 2>/dev/null
+else
+    rc-update del shairport-sync default 2>/dev/null
 fi
 #
 if [ "$web" = "enable" ]; then
