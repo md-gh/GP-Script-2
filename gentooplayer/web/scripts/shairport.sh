@@ -91,12 +91,23 @@ if [ "$orate" = "auto" ]; then
     oratee="output_rate = "$orate";"
 fi
 
+if [ "$oformat" = "auto" ]; then
+    oformatt=""
+  else
+    oformatt="output_format = "$oformat";"
+fi
+
+syncc="disable_synchronization = "$oformat";"
+
+
 cat > /etc/shairport-sync.conf <<EOF
 alsa =
 {
 output_device = "$audiocardid";
 $mixernamee
 $oratee
+$oformatt
+$syncc
 }
 EOF
 
