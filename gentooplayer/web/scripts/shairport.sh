@@ -63,7 +63,7 @@ done
 card=$(echo $audiocard | awk '{print $2}' | sed 's/\://g')
 cardid=$(cat /proc/asound/card$card/id)
 dev=$(cat /proc/asound/card$card/pcm0p/info | awk 'NR==2' | awk '{print $2}')
-audiocardid='"hw:CARD=$cardid,DEV=$dev"'
+audiocardid="hw:CARD=$cardid,DEV=$dev"
 
 for (( i=0; i<repeats ; i++ ))
 do
@@ -94,7 +94,7 @@ fi
 cat > /etc/shairport-sync.conf <<EOF
 alsa =
 {
-output_device = $audiocardid;
+output_device = '"$audiocardid"';
 $mixername
 $oratee
 }
