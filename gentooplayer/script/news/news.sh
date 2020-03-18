@@ -16,5 +16,6 @@ chmod +x /tmp/GP-news-master/news.sh
 
 #chmod +x /tmp/news/news.sh
 clear
-/tmp/news/news.sh
+#/tmp/news/news.sh
+/tmp/GP-news-master/news.sh
 exit 0
