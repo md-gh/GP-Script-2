@@ -21,23 +21,9 @@ else
 fi
 
 if
-git clone https://github.com/antonellocaroli/GP-overlay.git; then
+git clone https://github.com/antonellocaroli/GP-overlay.git && rm -rf /var/db/repos/antonellocaroli && mv GP-overlay/ /var/db/repos/antonellocaroli; then
     echo -e "\n \e[38;5;154m[OK]\e[0m\n"
 else
     echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
     exit 0
-fi
-
-if
-rm -rf /var/db/repos/antonellocaroli; then
-    echo -e "\n \e[38;5;154m[OK]\e[0m\n"
-else
-    echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
-fi
-
-if
-mv GP-overlay/ /var/db/repos/antonellocaroli; then
-    echo -e "\n \e[38;5;154m[OK]\e[0m\n"
-else
-    echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
 fi
