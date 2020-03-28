@@ -1,0 +1,6 @@
+{
+  "name": "A. Reboot system",
+  "script_path": "/opt/.gentooplayer/web/scripts/reboot.sh",
+  "description": "Click on **Excute** for system reboot",
+  "working_directory": "/tmp"
+}

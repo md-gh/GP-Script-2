@@ -1,0 +1,254 @@
+#!/bin/sh
+#Profile3
+
+sleep 10
+
+echo 0 > /sys/bus/workqueue/devices/writeback/numa
+echo 1 > /sys/bus/workqueue/devices/writeback/cpumask
+echo 1000 > /proc/sys/vm/stat_interval
+echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
+echo -1 >/proc/sys/kernel/sched_rt_runtime_us
+
+for process in `ps -eo pid` ; do
+    f="$process"
+    taskset -acp 0 "$f" &>/dev/null
+done
+
+for D in $(ls /proc/irq)
+do
+if [[ -x "/proc/irq/$D" && $D != "0" ]]
+then
+  echo 1 > /proc/irq/$D/smp_affinity &>/dev/null
+fi
+done
+
+for process in `ps -eo pid,command,psr | egrep -w "dwc_otg_" | awk '{print $1}'` ; do
+    f="$process"
+    taskset -acp 0 "$f" &>/dev/null
+    renice -n -5 -p "$f" &>/dev/null
+    chrt -v -r -p 90 "$f" &>/dev/null
+done
+
+for process in `ps -eo pid,command,psr | egrep -w "dwc_otg" | awk '{print $1}'` ; do
+    f="$process"
+    taskset -acp 0 "$f" &>/dev/null
+    renice -n -5 -p "$f" &>/dev/null
+    chrt -v -r -p 90 "$f" &>/dev/null
+done
+
+for irq in `cat /proc/interrupts | grep hci | grep -v grep | awk '{print $1}' | sed s/:/\/` ; do
+    f="/proc/irq/$irq/smp_affinity"
+    test -r "$f" || continue
+        echo "2" > "$f"
+done
+#
+#
+for irq in `cat /proc/interrupts | grep eth | grep -v grep | awk '{print $1}' | sed s/:/\/` ; do
+    f="/proc/irq/$irq/smp_affinity"
+    test -r "$f" || continue
+        echo "4" > "$f"
+done
+
+
+irqu=$(cat /proc/interrupts | grep hci | grep -v grep | awk '{print $1}' | sed s/:/\/)
+irqe=$(cat /proc/interrupts | grep eth | grep -v grep | awk '{print $1}' | sed s/:/\/)
+irqup=$(ps -eo pid,command | egrep "hci|irq/$irqu" | grep -v grep | awk '{print $1}')
+irqep=$(ps -eo pid,command | egrep "eth|irq/$irqe" | grep -v grep | awk '{print $1}')
+
+for process in `ps -eo pid,command | egrep "$irqup" | awk '{print $1}'` ; do
+    f="$process"
+    #echo "$f" > /sys/fs/cgroup/cpuset/rtusb/tasks 2>/dev/null
+    taskset -acp 0 "$f"
+    renice -n -5 -p "$f" 2>/dev/null
+    chrt -v -r -p 90 "$f" 2>/dev/null
+done
+
+for process in `ps -eo pid,command | egrep "$irqep" | awk '{print $1}'` ; do
+    f="$process"
+    #echo "$f" > /sys/fs/cgroup/cpuset/rteth/tasks 2>/dev/null
+    taskset -acp 0 "$f"
+    renice -n -5 -p "$f" 2>/dev/null
+    chrt -v -r -p 85 "$f" 2>/dev/null
+done
+#grep -Fvf  /tmp/pid1 /tmp/pid
+
+
+##########nice and prio app
+#SCHED_OTHER
+#SCHED_RR
+aff='-10'
+cpus='1'
+policy='SCHED_RR'
+prior='75'
+
+cat > /etc/default/.dietpi-process_tool <<EOF
+######### Mpd #########################
+aname_save[0]='bin/mpd'
+anice_save[0]=$aff
+aaffinity_save[0]='$cpus'
+aschedule_policy_save[0]='$policy'
+aschedule_priority_save[0]='$prior'
+
+######### RoonBridge #################
+aname_save[2]='RoonBridge'
+anice_save[2]=$aff
+aaffinity_save[2]='$cpus'
+aschedule_policy_save[2]='$policy'
+aschedule_priority_save[2]='$prior'
+
+aname_save[3]='RoonBridgeHelper'
+anice_save[3]=$aff
+aaffinity_save[3]='$cpus'
+aschedule_policy_save[3]='$policy'
+aschedule_priority_save[3]='$prior'
+
+######### RoonBridge e Server ###########
+aname_save[4]='RAATServer'
+anice_save[4]=$aff
+aaffinity_save[4]='$cpus'
+aschedule_policy_save[4]='$policy'
+aschedule_priority_save[4]='$prior'
+
+########## RoonServer ###################
+aname_save[5]='RoonAppliance'
+anice_save[5]=$aff
+aaffinity_save[5]='$cpus'
+aschedule_policy_save[5]='$policy'
+aschedule_priority_save[5]='$prior'
+
+aname_save[6]='RoonServer'
+anice_save[6]=$aff
+aaffinity_save[6]='$cpus'
+aschedule_policy_save[6]='$policy'
+aschedule_priority_save[6]='$prior'
+
+########## Squeezelite ################
+aname_save[7]='squeezelite'
+anice_save[7]=$aff
+aaffinity_save[7]='$cpus'
+aschedule_policy_save[7]='$policy'
+aschedule_priority_save[7]='$prior'
+
+######### Squeezelite-R" #############
+aname_save[8]='squeezelite-R2'
+anice_save[8]=$aff
+aaffinity_save[8]='$cpus'
+aschedule_policy_save[8]='$policy'
+aschedule_priority_save[8]='$prior'
+
+######### LMS #######################
+aname_save[9]='slimserver.pl'
+anice_save[9]=$aff
+aaffinity_save[9]='$cpus'
+aschedule_policy_save[9]='$policy'
+aschedule_priority_save[9]='$prior'
+
+########## networkaudiod NAD ##########
+aname_save[10]='networkaudiod'
+anice_save[10]=$aff
+aaffinity_save[10]='$cpus'
+aschedule_policy_save[10]='$policy'
+aschedule_priority_save[10]='$prior'
+
+########## LMS ##########
+aname_save[11]='logitechmediaserver'
+anice_save[11]=$aff
+aaffinity_save[11]='$cpus'
+aschedule_policy_save[11]='$policy'
+aschedule_priority_save[11]='$prior'
+
+########## HQplayerDesktop ##########
+aname_save[12]='hqplayer'
+anice_save[12]=$aff
+aaffinity_save[12]='$cpus'
+aschedule_policy_save[12]='$policy'
+aschedule_priority_save[12]='$prior'
+
+########## HQplayerEmbedded ##########
+aname_save[13]='hqplayerd'
+anice_save[13]=$aff
+aaffinity_save[13]='$cpus'
+aschedule_policy_save[13]='$policy'
+aschedule_priority_save[13]='$prior'
+
+########## Merging Ravenna start##########
+#aname_save[13]='ravenna_start'
+#anice_save[13]=$aff
+#aaffinity_save[13]='$cpus'
+#aschedule_policy_save[13]='$policy'
+#aschedule_priority_save[13]='$prior'
+
+########## Merging Ravenna##########
+aname_save[14]='Merging_RAVENNA'
+anice_save[14]=$aff
+aaffinity_save[14]='$cpus'
+aschedule_policy_save[14]='$policy'
+aschedule_priority_save[14]='$prior'
+EOF
+/opt/.gentooplayer/GentooPlayer/gentooplayer/dietpi-process_tool 1 &>/dev/null
+
+for process in `ps -C upmpdcli -L --no-headers -o tid` ; do
+    f="$process"
+    taskset -acp 1 "$f" &>/dev/null
+    renice -n -2 -p "$f" &>/dev/null
+    chrt -v -r -p 60 "$f" &>/dev/null
+done
+
+cat > /etc/conf.d/rtirq <<EOF
+#
+# Copyright (C) 2004-2015, rncbc aka Rui Nuno Capela.
+#
+#   This program is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU General Public License
+#   as published by the Free Software Foundation; either version 2
+#   of the License, or (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License along
+#   with this program; if not, write to the Free Software Foundation, Inc.,
+#   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+# /etc/conf.d/rtirq
+# /etc/default/rtirq
+#
+# Configuration for IRQ thread tunning,
+# for realtime-preempt enabled kernels.
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 2 or later.
+#
+
+# IRQ thread service names
+# (space separated list, from higher to lower priority).
+# RTIRQ_NAME_LIST="rtc snd usb i8042" # old
+# RTIRQ_NAME_LIST="rtc snd xhci eth i915 usb hcd smb"
+RTIRQ_NAME_LIST="rtc dwc_otg"
+
+# Highest priority.
+RTIRQ_PRIO_HIGH=95
+
+# Priority decrease step.
+RTIRQ_PRIO_DECR=3
+
+# Lowest priority.
+RTIRQ_PRIO_LOW=51
+
+# Whether to reset all IRQ threads to SCHED_OTHER.
+RTIRQ_RESET_ALL=0
+
+# On kernel configurations that support it,
+# which services should be NOT threaded
+# (space separated list).
+#RTIRQ_NON_THREADED="rtc snd"
+RTIRQ_NON_THREADED=""
+
+# Process names which will be forced to the
+# highest realtime priority range (99-91)
+# (space separated list, from highest to lower priority).
+RTIRQ_HIGH_LIST="timer snd-hrtimer"
+EOF
+/etc/init.d/rtirq restart &>/dev/null

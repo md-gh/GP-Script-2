@@ -1,0 +1,6 @@
+{
+  "name": "A. SystemInfo",
+  "script_path": "/opt/.gentooplayer/web/scripts/system_info.sh",
+  "description": "Click on **Excute** for system information",
+  "working_directory": "/tmp"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "GP-Update",
+  "script_path": "/opt/.gentooplayer/script/gp-update.sh",
+  "description": "**GP-Update** \n Update script and GP-Overlay",
+  "working_directory": "/tmp",
+  "group": "Update/Switching/Remove"
+}

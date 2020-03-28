@@ -1,0 +1,18 @@
+{
+  "name": "Software Update",
+  "script_path": "/opt/.gentooplayer/web/scripts/software_update.sh",
+  "description": " ________________________________ \n **Audio Software Update** \n ________________________________ \n . \n .",
+  "working_directory": "/tmp",
+  "group": "Update/Switching/Remove",
+  "parameters": [
+    {
+      "name": "Select Software Update",
+      "param": "-a",
+      "type": "multiselect",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/update/upoverlay.sh"
+      },
+      "description": "Select Software update"
+    }
+  ]
+}

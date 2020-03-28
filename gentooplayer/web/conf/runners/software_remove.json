@@ -1,0 +1,18 @@
+{
+  "name": "Software Remove",
+  "script_path": "/opt/.gentooplayer/web/scripts/software_remove.sh",
+  "description": " ________________________________ \n **Audio Software Remove** \n ________________________________ \n . \n .",
+  "working_directory": "/tmp",
+  "group": "Update/Switching/Remove",
+  "parameters": [
+    {
+      "name": "Select Software to remove",
+      "param": "-a",
+      "type": "multiselect",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/update/remove.sh"
+      },
+      "description": "Select Software remove"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+(use the arrow keys and PgUp / PgDn to scroll the text.
+Press the "q" key to exit this viewer).
+
+The system is already working like this, but it is strongly recommended to recompile it.
+The recompilation time varies depending on the CPU power.
+A few hours for an i7, about 12 hours for an i3 and for a futro even 48 hours
+To recompile the system based on the characteristics of your CPU, run the command:
+#ricompila
+
+after the recompilation is good thing to give a
+#emerge --depclean --ask
+check what emerges wants to delete and give the ok
+after giving
+#revdep-rebuild
+
+################################################## #############################################
+
+At boot there are already two kernels (pf-sources and rt-sources) but it is strongly recommended
+recompile the kernel according to your needs and hardware, using the command:
+#kernelinstall
+
+################################################## #############################################
+
+It is advisable to use a static IP in order to also have the dhcp disabled. Use the command:
+#ipstatic
+
+which helps in configuring a static IP and disables the dhcp
+
+################################################## ##############################################
+
+If you want to turn off the PC with the power button, add the acpid at startup, type the following commands:
+/etc/init.d/acpid start
+rc-update add acpid default

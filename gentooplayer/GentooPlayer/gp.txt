@@ -1,0 +1,16 @@
+######  SET THE GOVERNOR HERE  ###############################
+#Cpu Governor | ondemand | powersave | performance | conservative
+CONFIG_CPU_GOVERNOR=performance
+CONFIG_CPU_USAGE_THROTTLE_UP=50
+
+#Limit the max cpu frequency (Mhz) for all cores. | Disabled=disabled | Useful for lowering temp/power usage on your device.
+CONFIG_CPU_MAX_FREQ=Disabled
+
+#Limit the min cpu frequency (Mhz) for all cores. | Disabled=disabled | Useful for 1-wire correct support (eg. 480Mhz).
+CONFIG_CPU_MIN_FREQ=Disabled
+
+#Min value 10000 microseconds (10ms)
+CONFIG_CPU_ONDEMAND_SAMPLE_RATE=25000
+
+#sampling rate * down factor / 1000 = Milliseconds (40 = 1000ms when sampling rate is 25000)
+CONFIG_CPU_ONDEMAND_SAMPLE_DOWNFACTOR=80

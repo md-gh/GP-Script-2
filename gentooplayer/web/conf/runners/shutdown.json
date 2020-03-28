@@ -1,0 +1,6 @@
+{
+  "name": "A. Shutdown System",
+  "script_path": "/opt/.gentooplayer/web/scripts/shut.sh",
+  "description": "Click on **Excute** for system shutdown",
+  "working_directory": "/tmp"
+}

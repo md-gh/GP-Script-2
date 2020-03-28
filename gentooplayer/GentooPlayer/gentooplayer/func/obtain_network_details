@@ -1,0 +1,507 @@
+#!/bin/bash
+{
+	#////////////////////////////////////
+	# DietPi Function:
+	# - obtain_network_details
+	#
+	#////////////////////////////////////
+	# Created by Daniel Knight / daniel.knight@dietpi.com / dietpi.com
+	#
+	#////////////////////////////////////
+	#
+	# Info:
+	# - Attempts to find the 1st index numbers for eth[0-9] and wlan[0-9] devices
+	# - Obtains the active network adapter (eth, then wlan).
+	# - Saves the above data to $FP_NETFILE for use systemwide
+	#
+	# $FP_NETFILE line1
+	# - eth index
+	# $FP_NETFILE line2
+	# - wlan index
+	# $FP_NETFILE line3
+	# - Active adapter name (eg: eth0)
+	# $FP_NETFILE line4
+	# - IP address
+	#////////////////////////////////////
+
+	#Import DietPi-Globals ---------------------------------------------------------------
+	. /opt/.gentooplayer/GentooPlayer/gentooplayer/func/dietpi-globals
+	export G_PROGRAM_NAME='DietPi-Obtain_network_details'
+	G_INIT
+	#Import DietPi-Globals ---------------------------------------------------------------
+
+	#/////////////////////////////////////////////////////////////////////////////////////
+	# Global
+	#/////////////////////////////////////////////////////////////////////////////////////
+
+	FP_TEMP='/tmp/dietpi-ip_list'
+	FP_NETFILE='/opt/.gentooplayer/GentooPlayer/gentooplayer/.network'
+
+	ETH_INDEX=0
+	WLAN_INDEX=0
+	ACTIVE_DEVICE='NULL'
+	IP_ADDRESS='Rete non rilevata'
+
+	#/////////////////////////////////////////////////////////////////////////////////////
+	# Main Loop
+	#/////////////////////////////////////////////////////////////////////////////////////
+
+	#grab content of ip l
+	ip -o l > $FP_TEMP
+
+	# Find active eth device
+	if tmp=$(grep -m1 ' eth[0-9]: .* state UP ' $FP_TEMP); then
+
+		tmp=${tmp#* eth}
+		ETH_INDEX=${tmp%%: *}
+
+		ACTIVE_DEVICE="eth$ETH_INDEX"
+		IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+		IP_ADDRESS=${IP_ADDRESS#*inet* }
+		IP_ADDRESS=${IP_ADDRESS%%/*}
+
+	# Else find available eth device
+	elif tmp=$(grep -m1 ' eth[0-9]: ' $FP_TEMP); then
+
+		tmp=${tmp#* eth}
+		ETH_INDEX=${tmp%%: *}
+
+	fi
+
+
+
+	# Find active enp0s device
+	if tmp=$(grep -m1 ' enp0s[0-9]: .* state UP ' $FP_TEMP); then
+
+		tmp=${tmp#* enp0s}
+		ETH_INDEX=${tmp%%: *}
+
+		ACTIVE_DEVICE="enp0s$ETH_INDEX"
+		IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+		IP_ADDRESS=${IP_ADDRESS#*inet* }
+		IP_ADDRESS=${IP_ADDRESS%%/*}
+
+	# Else find available eth device
+	elif tmp=$(grep -m1 ' enp0s[0-9]: ' $FP_TEMP); then
+
+		tmp=${tmp#* enp0s}
+		ETH_INDEX=${tmp%%: *}
+
+	fi
+
+  	# Find active enp1s device
+        if tmp=$(grep -m1 ' enp1s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp1s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp1s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp1s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp1s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp2s device
+        if tmp=$(grep -m1 ' enp2s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp2s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp2s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp2s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp2s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp3s device
+        if tmp=$(grep -m1 ' enp3s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp3s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp3s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp3s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp3s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp4s device
+        if tmp=$(grep -m1 ' enp4s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp4s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp4s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp4s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp4s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp5s device
+        if tmp=$(grep -m1 ' enp5s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp5s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp5s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp5s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp5s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp6s device
+        if tmp=$(grep -m1 ' enp6s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp6s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp6s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp6s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp6s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp7s device
+        if tmp=$(grep -m1 ' enp7s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp7s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp7s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp7s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp7s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+ 	# Find active enp8s device
+        if tmp=$(grep -m1 ' enp8s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp8s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp8s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp8s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp8s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+
+
+	# Find active enp9s device
+        if tmp=$(grep -m1 ' enp9s[0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp9s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp9s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp9s[0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp0s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+
+
+ ##########################################
+ # Find active enp0s device
+	if tmp=$(grep -m1 ' enp0s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+		tmp=${tmp#* enp0s}
+		ETH_INDEX=${tmp%%: *}
+
+		ACTIVE_DEVICE="enp0s$ETH_INDEX"
+		IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+		IP_ADDRESS=${IP_ADDRESS#*inet* }
+		IP_ADDRESS=${IP_ADDRESS%%/*}
+
+	# Else find available eth device
+	elif tmp=$(grep -m1 ' enp0s[0-9][0-9]: ' $FP_TEMP); then
+
+		tmp=${tmp#* enp0s}
+		ETH_INDEX=${tmp%%: *}
+
+	fi
+
+  	# Find active enp1s device
+        if tmp=$(grep -m1 ' enp1s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp1s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp1s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp1s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp1s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp2s device
+        if tmp=$(grep -m1 ' enp2s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp2s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp2s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp2s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp2s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp3s device
+        if tmp=$(grep -m1 ' enp3s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp3s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp3s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp3s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp3s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp4s device
+        if tmp=$(grep -m1 ' enp4s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp4s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp4s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp4s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp4s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp5s device
+        if tmp=$(grep -m1 ' enp5s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp5s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp5s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp5s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp5s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp6s device
+        if tmp=$(grep -m1 ' enp6s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp6s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp6s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp6s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp6s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+  	# Find active enp7s device
+        if tmp=$(grep -m1 ' enp7s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp7s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp7s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp7s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp7s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+ 	# Find active enp8s device
+        if tmp=$(grep -m1 ' enp8s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp8s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp8s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp8s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp8s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+
+
+
+	# Find active enp9s device
+        if tmp=$(grep -m1 ' enp9s[0-9][0-9]: .* state UP ' $FP_TEMP); then
+
+                tmp=${tmp#* enp9s}
+                ETH_INDEX=${tmp%%: *}
+
+                ACTIVE_DEVICE="enp9s$ETH_INDEX"
+                IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+                IP_ADDRESS=${IP_ADDRESS#*inet* }
+                IP_ADDRESS=${IP_ADDRESS%%/*}
+
+        # Else find available eth device
+        elif tmp=$(grep -m1 ' enp9s[0-9][0-9]: ' $FP_TEMP); then
+
+                tmp=${tmp#* enp0s}
+                ETH_INDEX=${tmp%%: *}
+
+        fi
+############################################
+
+
+
+
+
+	# Find active wlan device
+	if tmp=$(grep -m1 ' wlan[0-9]: .* state UP ' $FP_TEMP); then
+
+		tmp=${tmp#* wlan}
+		WLAN_INDEX=${tmp%%: *}
+
+		# Eth has priority
+		if [[ $ACTIVE_DEVICE == 'NULL' ]]; then
+
+			ACTIVE_DEVICE="wlan$WLAN_INDEX"
+			IP_ADDRESS=$(ip -o a s $ACTIVE_DEVICE)
+			IP_ADDRESS=${IP_ADDRESS#*inet* }
+			IP_ADDRESS=${IP_ADDRESS%%/*}
+
+		fi
+
+	# Else find available wlan device
+	elif tmp=$(grep -m1 ' wlan[0-9]: ' $FP_TEMP); then
+
+		tmp=${tmp#* wlan}
+		WLAN_INDEX=${tmp%%: *}
+
+	fi
+
+	#-----------------------------------------------------------------------------------
+	#Output to file
+	cat << _EOF_ > $FP_NETFILE
+$ETH_INDEX
+$WLAN_INDEX
+$ACTIVE_DEVICE
+$IP_ADDRESS
+_EOF_
+	# Assure that non-root user can call this script:
+	chmod 666 $FP_NETFILE &> /dev/null
+
+	#Clean up tmp files used
+	rm $FP_TEMP
+	#-----------------------------------------------------------------------------------
+	exit
+	#-----------------------------------------------------------------------------------
+
+}
+

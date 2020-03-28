@@ -1,0 +1,24 @@
+{
+  "name": "B. Excute Command",
+  "script_path": "/opt/.gentooplayer/web/scripts/command.sh",
+  "description": " ________________________________ \n **Insert command and excute** \n ________________________________ \n . \n .",
+  "working_directory": "/tmp",
+  "parameters": [
+    {
+      "name": "Use a recent command",
+      "param": "-b",
+      "type": "list",
+      "default":"",
+      "values": {
+        "script": "/etc/default/web/command.sh"
+      },
+      "description": "type command to excute"
+    },
+    {
+      "name": "Type command",
+      "param": "-a",
+      "type": "text",
+      "description": "type command to excute"
+    }
+  ]
+}

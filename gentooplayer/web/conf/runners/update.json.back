@@ -1,0 +1,39 @@
+{
+  "name": "Software Upd/Rem",
+  "script_path": "/opt/.gentooplayer/web/scripts/update.sh",
+  "description": " ________________________________ \n **Audio Software Update/Remove** \n ________________________________ \n . \n .",
+  "working_directory": "/tmp",
+  "group": "Update/Switching/Remove",
+  "parameters": [
+    {
+      "name": "Select Software Update",
+      "param": "-a",
+      "type": "list",
+      "values": [
+        "",
+        "All",
+        "GentooPlayer_gp-update",
+        "Squeezelite-R2",
+        "Squeezelite",
+        "LogitechMediaServer",
+        "HQPlayerEmbedded",
+        "HQPlayer3",
+        "HQPlayer4",
+        "Networkaudiod",
+        "Mpd",
+        "UpMpdCli",
+        "MyMpd"
+      ],
+      "description": "Select Software"
+    },
+    {
+      "name": "Select Software Remove",
+      "param": "-b",
+      "type": "list",
+      "values": {
+        "script": "cat /etc/default/web/software/remove"
+      },
+      "description": "Select Software"
+    }
+  ]
+}

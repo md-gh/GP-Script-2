@@ -1,0 +1,19 @@
+{
+  "name": "Keyboard layout",
+  "script_path": "/opt/.gentooplayer/web/scripts/layot.sh",
+  "description": "**Keyboard layout switching**",
+  "working_directory": "/tmp",
+  "group": "System Base",
+  "parameters": [
+    {
+      "name": "Select language",
+      "param": "-c",
+      "type": "list",
+      "required": true,
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/layot/layot.sh"
+      },
+      "description": "Select language"
+    }
+  ]
+}

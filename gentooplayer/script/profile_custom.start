@@ -1,0 +1,122 @@
+#!/bin/sh
+#Profile: CUSTOM
+
+softcpu=
+procethff=
+nicetff=
+prioethff=
+procusbff=
+nicusff=
+priousff=
+irqcuff=
+irqceff=
+
+sleep 10
+
+echo 0 > /sys/bus/workqueue/devices/writeback/numa
+echo 1 > /sys/bus/workqueue/devices/writeback/cpumask
+echo 1000 > /proc/sys/vm/stat_interval
+echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
+echo -1 >/proc/sys/kernel/sched_rt_runtime_us
+
+for process in `ps -eo pid` ; do
+    f="$process"
+    taskset -acp 0 "$f" &>/dev/null
+done
+
+for D in $(ls /proc/irq)
+do
+if [[ -x "/proc/irq/$D" && $D != "0" ]]
+then
+  echo 1 > /proc/irq/$D/smp_affinity &>/dev/null
+fi
+done
+
+if [ ${#prioethff} -eq 0 ]; then
+echo ""
+else
+  /etc/init.d/rtirq restart &>/dev/null
+fi
+
+
+for process in `ps -eo pid,command,psr | egrep -w "dwc_otg_" | awk '{print $1}'` ; do
+    f="$process"
+    $procethff "$f" &>/dev/null
+    $nicetff "$f" &>/dev/null
+    $prioethff "$f" &>/dev/null
+done
+
+for process in `ps -eo pid,command,psr | egrep -w "dwc_otg" | awk '{print $1}'` ; do
+    f="$process"
+    $procusbff "$f" &>/dev/null
+    $nicusff "$f" &>/dev/null
+    $priousff "$f" &>/dev/null
+done
+
+for irq in `cat /proc/interrupts | grep hci | grep -v grep | awk '{print $1}' | sed s/:/\/` ; do
+    f="/proc/irq/$irq/smp_affinity"
+    test -r "$f" || continue
+        echo "$irqcuff" > "$f"
+done
+for irq in `cat /proc/interrupts | egrep -w "dwc_otg" | grep -v grep | awk '{print $1}' | sed s/:/\/` ; do
+    f="/proc/irq/$irq/smp_affinity"
+    test -r "$f" || continue
+        echo "$irqcuff" > "$f"
+done
+#
+#
+for irq in `cat /proc/interrupts | grep eth | grep -v grep | awk '{print $1}' | sed s/:/\/` ; do
+    f="/proc/irq/$irq/smp_affinity"
+    test -r "$f" || continue
+        echo "$irqceff" > "$f"
+done
+for irq in `cat /proc/interrupts | egrep -w "dwc_otg_" | grep -v grep | awk '{print $1}' | sed s/:/\/` ; do
+    f="/proc/irq/$irq/smp_affinity"
+    test -r "$f" || continue
+        echo "$irqceff" > "$f"
+done
+
+
+irqu=$(cat /proc/interrupts | grep hci | grep -v grep | awk '{print $1}' | sed s/:/\/)
+irqe=$(cat /proc/interrupts | grep eth | grep -v grep | awk '{print $1}' | sed s/:/\/)
+irqup=$(ps -eo pid,command | egrep "hci|irq/$irqu" | grep -v grep | awk '{print $1}')
+irqep=$(ps -eo pid,command | egrep "eth|irq/$irqe" | grep -v grep | awk '{print $1}')
+
+for process in `ps -eo pid,command | egrep "$irqup" | awk '{print $1}'` ; do
+    f="$process"
+    #echo "$f" > /sys/fs/cgroup/cpuset/rtusb/tasks 2>/dev/null
+    $procusbff "$f"
+    $nicusff "$f" 2>/dev/null
+    $priousff "$f" 2>/dev/null
+done
+
+for process in `ps -eo pid,command | egrep "$irqep" | awk '{print $1}'` ; do
+    f="$process"
+    #echo "$f" > /sys/fs/cgroup/cpuset/rteth/tasks 2>/dev/null
+    $procethff "$f"
+    $nicetff "$f" 2>/dev/null
+    $prioethff "$f" 2>/dev/null
+done
+
+if [ ${#softcpu} -eq 0 ]; then
+echo ""
+else
+  for process in `ps -C upmpdcli -L --no-headers -o tid` ; do
+      f="$process"
+      taskset -acp $irqceff "$f" &>/dev/null
+      renice -n -2 -p "$f" &>/dev/null
+      chrt -v -r -p 60 "$f" &>/dev/null
+  done
+fi
+
+if [ ${#prioethff} -eq 0 ]; then
+echo ""
+else
+  /etc/init.d/rtirq restart &>/dev/null
+fi
+
+/opt/.gentooplayer/GentooPlayer/gentooplayer/dietpi-process_tool 1 &>/dev/null
+
+sleep 60
+
+/opt/.gentooplayer/GentooPlayer/gentooplayer/dietpi-process_tool 1 &>/dev/null

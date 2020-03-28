@@ -1,0 +1,10 @@
+#!/bin/sh
+#Profile5
+
+sleep 10
+
+echo 0 > /sys/bus/workqueue/devices/writeback/numa
+echo 1 > /sys/bus/workqueue/devices/writeback/cpumask
+echo 1000 > /proc/sys/vm/stat_interval
+echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
+echo -1 >/proc/sys/kernel/sched_rt_runtime_us

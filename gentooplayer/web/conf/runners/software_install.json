@@ -1,0 +1,18 @@
+{
+  "name": "Software Install",
+  "script_path": "/opt/.gentooplayer/web/scripts/software_install.sh",
+  "description": " ________________________________ \n **Audio Software install** \n ________________________________ \n . \n .",
+  "working_directory": "/tmp",
+  "group": "Update/Switching/Remove",
+  "parameters": [
+    {
+      "name": "Select Software to install",
+      "param": "-a",
+      "type": "multiselect",
+      "values": {
+        "script": "/opt/.gentooplayer/web/scripts/script/update/software_install.sh"
+      },
+      "description": "Select Software install"
+    }
+  ]
+}

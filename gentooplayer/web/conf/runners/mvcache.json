@@ -1,0 +1,19 @@
+{
+  "name": "Move Roons/LMS",
+  "script_path": "/opt/.gentooplayer/web/scripts/mvcache.sh",
+  "description": "On systems with little RAM (<8GB-16GB) and you use the Ramsystem you should move the RoonServer database and/or the LMS cache. If you use this software, you don't need it otherwise.",
+  "working_directory": "/tmp",
+  "group": "Player Setting",
+  "parameters": [
+    {
+      "name": "Select the action",
+      "param": "-a",
+      "type": "list",
+      "values": [
+        "MoveRoonDatabase",
+        "MoveLmsCache"
+      ],
+      "description": "Select the action"
+    }
+  ]
+}
