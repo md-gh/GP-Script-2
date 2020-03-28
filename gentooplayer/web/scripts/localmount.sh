@@ -65,7 +65,7 @@ case $fstype in
             chmod 777 /media/$dirn
             mount /dev/$mntl /media/$dirn
             if [[ $(findmnt -M "/media/$dirn") ]]; then
-                echo "The ext4 partition /dev/$mntl has been mounted to /media/$dirn"
+                echo "The ext3 partition /dev/$mntl has been mounted to /media/$dirn"
             else
                 echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
                 exit 0
@@ -87,7 +87,7 @@ case $fstype in
             chmod 777 /media/$dirn
             mount /dev/$mntl /media/$dirn
             if [[ $(findmnt -M "/media/$dirn") ]]; then
-                echo "The ext4 partition /dev/$mntl has been mounted to /media/$dirn"
+                echo "The ext2 partition /dev/$mntl has been mounted to /media/$dirn"
             else
                 echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
                 exit 0
@@ -109,7 +109,7 @@ case $fstype in
             chmod 777 /media/$dirn
             mount /dev/$mntl /media/$dirn
             if [[ $(findmnt -M "/media/$dirn") ]]; then
-                echo "The ext4 partition /dev/$mntl has been mounted to /media/$dirn"
+                echo "The vfat partition /dev/$mntl has been mounted to /media/$dirn"
             else
                 echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
                 exit 0
@@ -131,7 +131,7 @@ case $fstype in
             chmod 777 /media/$dirn
             mount -t ntfs-3g /dev/$mntl /media/$dirn
             if [[ $(findmnt -M "/media/$dirn") ]]; then
-                echo "The ext4 partition /dev/$mntl has been mounted to /media/$dirn"
+                echo "The ntfs partition /dev/$mntl has been mounted to /media/$dirn"
             else
                 echo -e "\n \e[38;5;197m[FAILED]\e[0m\n"
                 exit 0
