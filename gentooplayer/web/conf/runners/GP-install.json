@@ -1,5 +1,5 @@
 {
-  "name": "System N. Install GP - Beta",
+  "name": "Install GP - Beta",
   "script_path": "/opt/.gentooplayer/web/scripts/gp_install.sh",
   "description": "**Install Gentooplayer on internal HD or anather usb stick** \n **Warning:** is not strictly necessary, but the advice is to keep only the HD where to install GentooPlayer connected to the PC. \n **Warning:** assumes no responsibility for the result of the use of this function. The use of this function erases all contents of the disk. \n **Warning:** Depending on the speed of the optical media and/or the CPU, the process can take a long time (even hours).",
   "working_directory": "/tmp",
