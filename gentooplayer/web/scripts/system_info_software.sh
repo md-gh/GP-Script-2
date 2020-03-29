@@ -1,8 +1,8 @@
 #!/bin/bash
-echo
-echo
-
 . /opt/.gentooplayer/function/fcolors.sh
+echo
+echo
+/opt/.gentooplayer/script/gp-update0.sh &>/dev/null
 
 echo -e "$BRed LogitechMediaServer$color_off"
 lms=$(emerge --search "%logitechmediaserver-bin$" 2>/dev/null | grep 'media-sound/logitechmediaserver-bin\|Latest version available:\|Latest version installed:')
