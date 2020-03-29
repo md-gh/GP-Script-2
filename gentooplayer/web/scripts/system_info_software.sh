@@ -7,7 +7,7 @@ echo
 echo -e "$BRed LogitechMediaServer$color_off"
 soft=$(emerge --search "%logitechmediaserver-bin$" 2>/dev/null | grep 'media-sound/logitechmediaserver-bin\|Latest version available:\|Latest version installed:')
 #emerge --search "%logitechmediaserver-bin$" | grep 'media-sound/logitechmediaserver-bin\|Latest version available:\|Latest version installed:'
-echo "$lms"
+echo "$soft"
 echo
 echo -e "$BRed Squeezelite$color_off"
 soft=$(emerge --search "%squeezelite$" 2>/dev/null | grep 'media-sound/squeezelite\|Latest version available:\|Latest version installed:')
@@ -19,4 +19,12 @@ echo "$soft"
 echo
 echo -e "$BRed Networkaudiod$color_off"
 soft=$(emerge --search "%networkaudiod-bin$" 2>/dev/null | grep 'media-sound/networkaudiod-bin\|Latest version available:\|Latest version installed:')
+echo "$soft"
+echo
+echo -e "$BRed BubbleUpnp$color_off"
+soft=$(emerge --search "%bubbleupnp-bin$" 2>/dev/null | grep 'media-sound/bubbleupnp-bin\|Latest version available:\|Latest version installed:')
+echo "$soft"
+echo
+echo -e "$BRed HQPlayer Embedded$color_off"
+soft=$(emerge --search "%hqplayerd-bin$" 2>/dev/null | grep 'media-sound/hqplayerd-bin\|Latest version available:\|Latest version installed:')
 echo "$soft"
