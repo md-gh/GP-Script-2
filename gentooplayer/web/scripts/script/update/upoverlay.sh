@@ -32,5 +32,29 @@ fi
 if equery --quiet list mympd &>/dev/null; then
         echo "mympd" >> /tmp/upso
 fi
-
+#
+if equery --quiet list bubbleupnp-bin &>/dev/null; then
+        echo "bubbleupnp-bin" >> /tmp/upso
+fi
+#
+if equery --quiet list RoonBridge &>/dev/null; then
+        echo "RoonBridge" >> /tmp/upso
+fi
+#
+if equery --quiet list RoonServer &>/dev/null; then
+        echo "RoonServer" >> /tmp/upso
+fi
+#
+if equery --quiet list shairport-sync &>/dev/null; then
+        echo "shairport-sync" >> /tmp/upso
+fi
+#
+if equery --quiet list jriver-bin &>/dev/null; then
+        echo "jriver-bin" >> /tmp/upso
+fi
+#
+if equery --quiet list qobuz-desktop-player-bin &>/dev/null; then
+        echo "qobuz-desktop-player-bin" >> /tmp/upso
+fi
+#
 cat /tmp/upso
