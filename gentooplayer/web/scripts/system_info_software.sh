@@ -28,3 +28,7 @@ echo
 echo -e "$BRed HQPlayer Embedded$color_off"
 soft=$(emerge --search "%hqplayerd-bin$" 2>/dev/null | grep 'media-sound/hqplayerd-bin\|Latest version available:\|Latest version installed:')
 echo "$soft"
+echo
+echo -e "$BRed Mpd$color_off"
+soft=$(emerge --search "%media-sound/mpd$" 2>/dev/null | grep 'media-sound/media-sound/mpd\|Latest version available:\|Latest version installed:')
+echo "$soft"
