@@ -45,10 +45,6 @@ echo -e "$BRed RoonServer$color_off"
 soft=$(emerge --search "%RoonServer$" 2>/dev/null | grep 'media-sound/RoonServer\|Latest version available:\|Latest version installed:')
 echo "$soft"
 echo
-echo -e "$BRed RoonServer$color_off"
-soft=$(emerge --search "%RoonServer$" 2>/dev/null | grep 'media-sound/RoonServer\|Latest version available:\|Latest version installed:')
-echo "$soft"
-echo
 echo -e "$BRed MyMpd$color_off"
 soft=$(emerge --search "%mympd$" 2>/dev/null | grep 'media-sound/mympd\|Latest version available:\|Latest version installed:')
 echo "$soft"
