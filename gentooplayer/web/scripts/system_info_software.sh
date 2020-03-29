@@ -14,5 +14,9 @@ sqeeze=$(emerge --search "%squeezelite$" 2>/dev/null | grep 'media-sound/squeeze
 echo "$sqeeze"
 echo
 echo -e "$BRed Squeezelite-R2$color_off"
-sqeeze=$(emerge --search "%squeezelite-R2$" 2>/dev/null | grep 'media-sound/squeezelite-R2\|Latest version available:\|Latest version installed:')
-echo "$sqeeze"
+sqeeze2=$(emerge --search "%squeezelite-R2$" 2>/dev/null | grep 'media-sound/squeezelite-R2\|Latest version available:\|Latest version installed:')
+echo "$sqeeze2"
+echo
+echo -e "$BRed Networkaudiod$color_off"
+nad=$(emerge --search "%networkaudiod-bin$" 2>/dev/null | grep 'media-sound/networkaudiod-bin\|Latest version available:\|Latest version installed:')
+echo "$nad"
