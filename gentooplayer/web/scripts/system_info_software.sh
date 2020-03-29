@@ -22,7 +22,7 @@ soft=$(emerge --search "%networkaudiod-bin$" 2>/dev/null | grep 'media-sound/net
 echo "$soft"
 echo
 echo -e "$BRed BubbleUpnp$color_off"
-soft=$(emerge --search "%bubbleupnp-bin$" 2>/dev/null | grep 'media-sound/bubbleupnp-bin\|Latest version available:\|Latest version installed:')
+soft=$(emerge --search "%bubbleupnp-bin$" 2>/dev/null | grep 'net-misc/bubbleupnp-bin\|Latest version available:\|Latest version installed:')
 echo "$soft"
 echo
 echo -e "$BRed HQPlayer Embedded$color_off"
