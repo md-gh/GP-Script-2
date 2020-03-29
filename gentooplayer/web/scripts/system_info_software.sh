@@ -9,7 +9,10 @@ lms=$(emerge --search "%logitechmediaserver-bin$" 2>/dev/null | grep 'media-soun
 #emerge --search "%logitechmediaserver-bin$" | grep 'media-sound/logitechmediaserver-bin\|Latest version available:\|Latest version installed:'
 echo "$lms"
 echo
-echo
 echo -e "$BRed Squeezelite$color_off"
 sqeeze=$(emerge --search "%squeezelite$" 2>/dev/null | grep 'media-sound/squeezelite\|Latest version available:\|Latest version installed:')
+echo "$sqeeze"
+echo
+echo -e "$BRed Squeezelite-R2$color_off"
+sqeeze=$(emerge --search "%squeezelite-R2$" 2>/dev/null | grep 'media-sound/squeezelite-R2\|Latest version available:\|Latest version installed:')
 echo "$sqeeze"
