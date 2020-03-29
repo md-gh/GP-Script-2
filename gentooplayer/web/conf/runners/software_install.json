@@ -1,5 +1,5 @@
 {
-  "name": "Software Install - Wait...",
+  "name": "Software Install",
   "script_path": "/opt/.gentooplayer/web/scripts/software_install.sh",
   "description": " ________________________________ \n **Audio Software install** \n ________________________________ \n . \n .",
   "working_directory": "/tmp",
