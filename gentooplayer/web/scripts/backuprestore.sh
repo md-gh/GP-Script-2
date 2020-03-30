@@ -78,13 +78,13 @@ else
     else
         echo
         echo
-        echo "The directory $dirf is not mounted exit"
+        echo -e "$BRed The directory $dirb is not mounted exit$Color_Off"
         exit 0
     fi
 fi
 
 if [ ${#dirb} -eq 0 ] && [ ${#dirn} -eq 0 ]; then
-    echo "you didn't make any choice"
+    echo "$BRed you didn't make any choice$Color_Off"
 fi
 
 #if [ ${#dirn} -eq 0 -a ${#dirb} -eq 0} ]; then
