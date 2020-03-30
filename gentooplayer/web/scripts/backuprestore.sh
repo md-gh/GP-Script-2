@@ -25,6 +25,7 @@ do
     esac
     shift # past argument or value
 done
+. /opt/.gentooplayer/function/fcolors.sh
 
 if [ ${#dirb} -ne 0 ] && [ ${#dirn} -ne 0 ]; then
     echo "You cannot use both options at the same time"
@@ -42,11 +43,15 @@ else
         rsync -a /etc/conf.d /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
         rsync -a /etc/mpd.conf /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"
         ls -1v /etc/runlevels/default/ > /media/$dirb/gp-backup-"$(date '+%Y-%m-%d-%H%M')"/rcdefault
+        echo
+        echo
         echo -e "$Green"Backup completed"$Color_Off"
         echo
         echo -e "$Yellow Wait... $Color_Off" && sleep 5
     else
-        echo "The directory $dirb is not mounted exit"
+        echo
+        echo
+        echo -e "$BRed The directory $dirb is not mounted exit$Color_Off"
         exit 0
     fi
 fi
@@ -65,10 +70,14 @@ else
             f="$process"
             rc-update add "$f" default
         done
+        echo
+        echo
         echo -e "$Green"Restore completed"$Color_Off"
         echo
         echo -e "$Yellow Wait... $Color_Off" && sleep 5
     else
+        echo
+        echo
         echo "The directory $dirf is not mounted exit"
         exit 0
     fi
