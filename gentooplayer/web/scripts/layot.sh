@@ -21,16 +21,13 @@ do
     esac
     shift # past argument or value
 done
-
-#oper=$(awk '{print $1}' <<< "$alsav")
-
-#alsasw=$(ls -1v /usr/portage/packages/media-libs/ | sed 's/.tbz2//' | sed 's/alsa-lib-//' | cat -n | awk '{if(NR=='$oper') print $0}' | awk '{print $2}')
-#echo "$kernn"
+. /opt/.gentooplayer/function/fcolors.sh
 
 layott=$(grep -F "$layot" /opt/.gentooplayer/web/scripts/script/layot/layot | awk '{print $1}')
 
 sed -i '/keymap=/c\keymap=''"'"$layott"'"''' /etc/conf.d/keymaps
-
-echo "Keyboard layout switching to $layot"
-
-echo "reboot the system to make the changes effective"
+echo
+echo
+echo -e "$BGreen Keyboard layout switching to $layot $color_off"
+echo
+echo -e "$BRed reboot the system to make the changes effective$color_off"
