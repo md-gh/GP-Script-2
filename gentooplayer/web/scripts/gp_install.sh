@@ -25,7 +25,7 @@ do
     esac
     shift # past argument or value
 done
-
+. /opt/.gentooplayer/function/fcolors.sh
 
 cd /tmp
 
@@ -69,11 +69,14 @@ case $gpv in
 esac
 
 diskk=$(echo "$disk" | awk '{print $1}')
-
-echo "wait...copy image"
+echo
+echo
+echo "$BGreen wait... copy image$color_off"
 
 xzcat gp.img.xz | dd of=/dev/$diskk
-echo "wait..."
+echo
+echo
+echo "$BGreen wait... $color_off"
 sleep 150
 
 case $gpv in
@@ -106,7 +109,7 @@ esac
 echo
 echo
 echo
-echo "GentooPlayer is ben installed on $diskk"
+echo "$BGreen GentooPlayer is ben installed on $diskk $color_off"
 echo
 echo
 echo
