@@ -34,19 +34,19 @@ case $alsav in
         /etc/init.d/alsasound restart
         echo
         echo
-        echo -e "alsa switching ok" ;;
+        echo -e "alsa switching v.$alsav ok" ;;
     1.1.2)
         emerge --ask -k =media-libs/alsa-lib-1.1.2 =media-sound/alsa-utils-1.1.2
         /etc/init.d/alsasound restart
         echo
         echo
-        echo -e "alsa switching ok" ;;
+        echo -e "alsa switching v.$alsav ok" ;;
     1.1.6)
         emerge --ask -k =media-libs/alsa-lib-1.1.6 =media-sound/alsa-utils-1.1.6
         /etc/init.d/alsasound restart
         echo
         echo
-        echo -e "alsa switching ok" ;;
+        echo -e "alsa switching v.$alsav ok" ;;
     1.1.8)
         emerge --ask -k =media-libs/alsa-lib-1.1.8 =media-sound/alsa-utils-1.1.8
         cp /var/db/repos/antonellocaroli/media-sound/alsa-utils/files/alsasound.initd-r7 /etc/init.d/alsasound
@@ -54,13 +54,13 @@ case $alsav in
         /etc/init.d/alsasound restart
         echo
         echo
-        echo -e "alsa switching ok" ;;
+        echo -e "alsa switching v.$alsav ok" ;;
     1.1.9)
         emerge --ask -k =media-libs/alsa-lib-1.1.9 =media-sound/alsa-utils-1.1.9
         /etc/init.d/alsasound restart
         echo
         echo
-        echo -e "alsa switching ok" ;;
+        echo -e "alsa switching v.$alsav ok" ;;
     1.2.1.2)
         emerge --ask -k =media-libs/alsa-lib-1.2.1.2 =media-sound/alsa-utils-1.2.1
         cp /var/db/repos/antonellocaroli/media-sound/alsa-utils/files/alsasound.initd-r8 /etc/init.d/alsasound
@@ -68,7 +68,7 @@ case $alsav in
         /etc/init.d/alsasound restart
         echo
         echo
-        echo -e "alsa switching ok" ;;
+        echo -e "alsa switching v.$alsav ok" ;;
     1.2.2)
         emerge --ask -k =media-libs/alsa-lib-1.2.2 =media-sound/alsa-utils-1.2.2
         cp /var/db/repos/antonellocaroli/media-sound/alsa-utils/files/alsasound.initd-r8 /etc/init.d/alsasound
@@ -76,5 +76,5 @@ case $alsav in
         /etc/init.d/alsasound restart
         echo
         echo
-        echo -e "alsa switching ok" ;;
+        echo -e "alsa switching v.$alsav ok" ;;
 esac
