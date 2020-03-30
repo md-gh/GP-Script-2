@@ -71,12 +71,12 @@ esac
 diskk=$(echo "$disk" | awk '{print $1}')
 echo
 echo
-echo "$BGreen wait... copy image$color_off"
+echo -e "$BGreen wait... copy image$color_off"
 
 xzcat gp.img.xz | dd of=/dev/$diskk
 echo
 echo
-echo "$BGreen wait... $color_off"
+echo -e "$BGreen wait... $color_off"
 sleep 150
 
 case $gpv in
@@ -109,7 +109,7 @@ esac
 echo
 echo
 echo
-echo "$BGreen GentooPlayer is ben installed on $diskk $color_off"
+echo -e "$BGreen GentooPlayer is ben installed on $diskk $color_off"
 echo
 echo
 echo
