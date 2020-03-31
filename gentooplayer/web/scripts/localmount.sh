@@ -29,6 +29,7 @@ do
     esac
     shift # past argument or value
 done
+. /opt/.gentooplayer/function/fcolors.sh
 
 UUID="$(lsblk -f | grep "$mntl" | awk '{ print $4 }')"
 fstype="$(lsblk -f | grep "$mntl" | awk '{ print $2 }')"
