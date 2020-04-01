@@ -28,3 +28,5 @@ done
 
 echo "$prova"
 echo "$prova1"
+
+ls -l $prova1
