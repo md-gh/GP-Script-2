@@ -32,6 +32,7 @@
       "param": "-d",
       "type": "server_file",
       "required": true,
+      "file_dir": "..",
       "secure": true,
       "file_recursive": true,
       "description": "List alsa version"
