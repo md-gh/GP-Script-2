@@ -5,6 +5,16 @@
   "working_directory": "/tmp",
   "parameters": [
     {
+      "name": "Server file",
+      "param": "--server_file",
+      "type": "server_file",
+      "secure": true,
+      "file_dir": "/var/log",
+      "file_extensions": [
+        "log"
+      ]
+    },
+    {
       "name": "open file iso",
       "param": "-c",
       "type": "server_file",
