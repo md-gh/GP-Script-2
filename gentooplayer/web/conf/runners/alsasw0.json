@@ -20,7 +20,8 @@
       "type": "server_file",
       "required": true,
       "secure": true,
-      "file_dir": "/iso",
+      "file_dir": "..",
+      "file_recursive": true,
       "file_extensions": [
         "iso"
       ],
