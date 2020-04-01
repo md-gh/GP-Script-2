@@ -13,6 +13,7 @@
       "file_dir": "..",
       "file_extensions": [
         ".iso"
+      ],
       "description": "List alsa version"
     }
   ]
