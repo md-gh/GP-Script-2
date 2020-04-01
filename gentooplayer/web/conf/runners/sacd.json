@@ -51,7 +51,7 @@
       ]
     },
     {
-      "name": "Estra options",
+      "name": "Extra options",
       "param": "-e",
       "type": "multiselect",
       "values": [
