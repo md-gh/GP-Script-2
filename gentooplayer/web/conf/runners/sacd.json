@@ -1,7 +1,7 @@
 {
   "name": "SACD extract",
   "script_path": "/opt/.gentooplayer/web/scripts/sacd.sh",
-  "description": "**SACD extract**  \n . \n **Select Export channel:** \n   ***--2ch-tracks*** (Export two channel tracks - default); --mch-tracks (Export multi-channel tracks)  \n **Select output as:** --output-dsf ( output as Sony DSF file); --output-dsdiff-em (output as Philips DSDIFF -Edit Master- file); --output-dsdiff (output as Philips DSDIFF file) \n **Estra options:** --dsf-nopad (Do not zero pad DSF); --convert-dst (convert DST to DSD); --export-cue (Export a CUE Sheet) \n **Warning:** only in GP version >=2.13  \n . \n .",
+  "description": "**SACD extract**  \n . \n Select Export channel: **--2ch-tracks** (Export two channel tracks - default); --mch-tracks (Export multi-channel tracks)  \n **Select output as:** --output-dsf ( output as Sony DSF file); --output-dsdiff-em (output as Philips DSDIFF -Edit Master- file); --output-dsdiff (output as Philips DSDIFF file) \n **Estra options:** --dsf-nopad (Do not zero pad DSF); --convert-dst (convert DST to DSD); --export-cue (Export a CUE Sheet) \n **Warning:** only in GP version >=2.13  \n . \n .",
   "working_directory": "/tmp",
   "group": "Utility",
   "parameters": [
