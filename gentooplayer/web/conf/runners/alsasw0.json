@@ -10,7 +10,7 @@
       "type": "server_file",
       "required": true,
       "secure": true,
-      "file_dir": "..",
+      "file_dir": "/",
       "file_extensions": [
         ".iso"
       ],
