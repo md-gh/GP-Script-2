@@ -1,0 +1,63 @@
+{
+  "name": "SACD extract",
+  "script_path": "/opt/.gentooplayer/web/scripts/sacd.sh",
+  "description": "**SACD extract**  \n . \n **Select Alsa Version** ([**Info Alsa Version on Gentoo**](https://packages.gentoo.org/packages/media-libs/alsa-lib)) \n . \n .",
+  "working_directory": "/tmp",
+  "group": "Utility",
+  "parameters": [
+    {
+      "name": "Select file iso",
+      "param": "-a",
+      "type": "server_file",
+      "required": true,
+      "secure": true,
+      "file_dir": "..",
+      "file_recursive": true,
+      "file_extensions": [
+        "iso"
+      ]
+    },
+    {
+      "name": "Select destination",
+      "param": "-b",
+      "type": "server_file",
+      "required": true,
+      "file_dir": "..",
+      "secure": true,
+      "file_recursive": true
+    },
+    {
+      "name": "Select Export channel",
+      "param": "-c",
+      "required": true,
+      "type": "list",
+      "default": "--2ch-tracks",
+      "values": [
+        "--2ch-tracks",
+        "--mch-tracks"
+      ]
+    },
+    {
+      "name": "Select output as",
+      "param": "-d",
+      "required": true,
+      "type": "list",
+      "default": "--output-dsf",
+      "values": [
+        "--output-dsf",
+        "--output-dsdiff-em",
+        "--output-dsdiff"
+      ]
+    },
+    {
+      "name": "Estra options",
+      "param": "-e",
+      "type": "multiselect",
+      "values": [
+        "--dsf-nopad",
+        "--convert-dst",
+        "--export-cue"
+      ]
+    }
+  ]
+}
