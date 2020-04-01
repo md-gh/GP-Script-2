@@ -26,6 +26,16 @@
         "iso"
       ],
       "description": "List alsa version"
+    },
+    {
+      "name": "open file iso1",
+      "param": "-c",
+      "type": "server_file",
+      "required": true,
+      "secure": true,
+      "file_dir": "..",
+      "file_recursive": true,
+      "description": "List alsa version"
     }
   ]
 }
