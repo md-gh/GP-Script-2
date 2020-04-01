@@ -22,7 +22,7 @@
       "secure": true,
       "file_dir": "/",
       "file_extensions": [
-        ".iso"
+        "iso"
       ],
       "description": "List alsa version"
     }
