@@ -13,7 +13,7 @@
       "values": {
         "script": "/opt/.gentooplayer/web/scripts/script/kernel/selectkernel.sh"
       },
-      "description": "List Disk cifs"
+      "description": "List Kernel"
     }
   ]
 }
