@@ -179,7 +179,7 @@ cat > /etc/conf.d/rtirq <<EOF
 # (space separated list, from higher to lower priority).
 # RTIRQ_NAME_LIST="rtc snd usb i8042" # old
 # RTIRQ_NAME_LIST="rtc snd xhci eth i915 usb hcd smb"
-RTIRQ_NAME_LIST="rtc dwc_otg"
+RTIRQ_NAME_LIST="rtc dwc_otg usb xhci eth"
 
 # Highest priority.
 RTIRQ_PRIO_HIGH=95
