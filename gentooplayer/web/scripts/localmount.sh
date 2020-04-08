@@ -31,7 +31,8 @@ do
 done
 . /opt/.gentooplayer/function/fcolors.sh
 
-UUID="$(lsblk -f | grep "$mntl" | awk '{ print $4 }')"
+#UUID="$(lsblk -f | grep "$mntl" | awk '{ print $4 }')"
+UUID="$(blkid -s UUID -o value /dev/$mntl)"
 fstype="$(lsblk -f | grep "$mntl" | awk '{ print $2 }')"
 
 case $fstype in
