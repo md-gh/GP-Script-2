@@ -181,7 +181,7 @@ if [ "$shair" = "enable" ]; then
 else
     rc-update del shairport-sync default 2>/dev/null
 fi
-if [ "$shair" = "enable" ]; then
+if [ "$spotfy" = "enable" ]; then
     rc-update add spotifyd default 2>/dev/null
     rc-service spotifyd restart 2>/dev/null
 else
