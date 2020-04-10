@@ -53,6 +53,10 @@ echo -e "$BRed Shairport-Sync$color_off"
 soft=$(emerge --search "%shairport-sync$" 2>/dev/null | grep 'media-sound/shairport-sync\|Latest version available:\|Latest version installed:')
 echo "$soft"
 echo
+echo -e "$BRed Spotifyd$color_off"
+soft=$(emerge --search "%spotifyd-bin$" 2>/dev/null | grep 'media-sound/spotifyd-bin\|Latest version available:\|Latest version installed:')
+echo "$soft"
+echo
 echo -e "$BRed Hqplayer-Desktop3$color_off"
 soft=$(emerge --search "%hqplayer-bin$" 2>/dev/null | grep 'media-sound/hqplayer-bin\|Latest version available:\|Latest version installed:')
 echo "$soft"
