@@ -187,6 +187,19 @@
       "description": "Enable or Disable Shairport-sync at boot"
     },
     {
+      "name": "Spotifyd",
+      "param": "-r",
+      "type": "list",
+      "default": {
+        "script": "/opt/.gentooplayer/web/scripts/spotifyd.sh"
+      },
+      "values": [
+        "enable",
+        "disable"
+      ],
+      "description": "An open source Spotify client running as a UNIX daemon."
+    },
+    {
       "name": "Web Interface",
       "param": "-o",
       "type": "list",

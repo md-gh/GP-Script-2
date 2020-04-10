@@ -45,6 +45,10 @@ if equery --quiet list RoonServer &>/dev/null; then
         echo "RoonServer" >> /tmp/upso
 fi
 #
+if equery --quiet list spotifyd-bin &>/dev/null; then
+        echo "spotifyd-bin" >> /tmp/upso
+fi
+#
 if equery --quiet list shairport-sync &>/dev/null; then
         echo "shairport-sync" >> /tmp/upso
 fi

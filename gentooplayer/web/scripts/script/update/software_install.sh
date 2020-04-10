@@ -53,6 +53,10 @@ if ! equery --quiet list RoonServer &>/dev/null; then
         echo "RoonServer" >> /tmp/upsi
 fi
 #
+if ! equery --quiet list spotify-bin &>/dev/null; then
+        echo "spotify-bin" >> /tmp/upsi
+fi
+#
 if ! equery --quiet list shairport-sync &>/dev/null; then
         echo "shairport-sync" >> /tmp/upsi
 fi

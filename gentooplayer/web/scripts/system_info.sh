@@ -129,6 +129,13 @@ else
     echo -e "shairport-sync          [\033[31;1mDisabled\e[0m]"
 fi
 
+if
+rc-update show -v | grep spotifyd | grep default 1>/dev/null; then
+    echo -e "spotifyd                [\033[32;1mEnabled\e[0m]"
+else
+    echo -e "spotifyd                [\033[31;1mDisabled\e[0m]"
+fi
+
 echo
 alsacap
 

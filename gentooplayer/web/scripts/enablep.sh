@@ -72,6 +72,10 @@ do
             shair="$2"
             shift # past argument
             ;;
+        -r)
+            spotfy="$2"
+            shift # past argument
+            ;;
         *)
             # unknown option
             ;;
@@ -176,6 +180,12 @@ if [ "$shair" = "enable" ]; then
     rc-service shairport-sync restart 2>/dev/null
 else
     rc-update del shairport-sync default 2>/dev/null
+fi
+if [ "$shair" = "enable" ]; then
+    rc-update add spotifyd default 2>/dev/null
+    rc-service spotifyd restart 2>/dev/null
+else
+    rc-update del spotifyd default 2>/dev/null
 fi
 #
 if [ "$web" = "enable" ]; then
